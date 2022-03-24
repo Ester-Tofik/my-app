@@ -1,0 +1,15 @@
+.login {
+    text-align: center;
+    margin-right: 50%;
+    position: -ms-page;
+    height: 50%;
+    width: 30%;
+    background-color: rgb(3, 112, 112);
+
+}
+input{
+    width: 20%;
+    text-align: center;
+    
+
+}
