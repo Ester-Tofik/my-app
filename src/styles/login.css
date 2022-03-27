@@ -2,7 +2,7 @@
 /* BASIC */
 
 html {
-    background-color: #e1c7fc;
+    background-color: #ebe6f0;
   }
   
   body {
@@ -11,7 +11,7 @@ html {
   }
   
   a {
-    color: #a371a5;
+    color: #632e68;
     display:inline-block;
     text-decoration: none;
     font-weight: 400;
@@ -39,7 +39,7 @@ html {
     width: 100%;
     min-height: 100%;
     padding-top: 60px;
-    /* padding: 20px; */
+     /* padding: 20px;  */
   }
   
   #formContent {
@@ -58,7 +58,7 @@ html {
   
   #formFooter {
     background-color: #f6f6f6;
-    border-top: 1px solid #dce8f1;
+    border-top: 1px solid #b5b6b8;
     padding: 25px;
     text-align: center;
     -webkit-border-radius: 0 0 10px 10px;
@@ -75,7 +75,7 @@ html {
   
   h2.active {
     color: #0d0d0d;
-    border-bottom: 2px solid #5fbae9;
+    border-bottom: 2px solid #5f2192;
   }
   
   
@@ -85,7 +85,7 @@ html {
   input[type=button], input[type=submit], input[type=reset]  {
     background-color: #652974;
     border: none;
-    color: white;
+    color: rgb(233, 232, 232);
     padding: 15px 80px;
     text-align: center;
     text-decoration: none;
@@ -116,8 +116,8 @@ html {
     transform: scale(0.95);
   }
   
-  input[type=text] {
-    background-color: #f6f6f6;
+  input[type=text], input[type=password] {
+    background-color: #d3d3d388;
     border: none;
     color: #0d0d0d;
     padding: 15px 32px;
@@ -138,11 +138,19 @@ html {
   }
   
   input[type=text]:focus {
-    background-color: #f3ecf3;
+    background-color: #e8e0f0;
     border-bottom: 2px solid #632e68;
   }
   
   input[type=text]:placeholder {
+    color: #cccccc;
+  }
+  input[type=password]:focus {
+    background-color: #e7dcf3;
+    border-bottom: 2px solid #632e68;
+  }
+  
+  input[type=password]:placeholder {
     color: #cccccc;
   }
   
@@ -235,7 +243,7 @@ html {
     bottom: -10px;
     width: 0;
     height: 2px;
-    background-color: #56baed;
+    background-color: #472666;
     content: "";
     transition: width 0.2s;
   }
