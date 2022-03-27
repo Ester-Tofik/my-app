@@ -10,8 +10,8 @@ import FloatLabelDemo from './components/a'
 ReactDOM.render(
   <React.StrictMode>
     {/* <App /> */}
-    <FloatLabelDemo/>
-    <Dialog></Dialog>
+    {/* <FloatLabelDemo/> */}
+    <LogIn/>
 
   </React.StrictMode>,
   document.getElementById('root')

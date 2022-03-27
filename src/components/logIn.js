@@ -8,44 +8,30 @@ import "primereact/resources/themes/lara-light-indigo/theme.css";  //theme
 import "primeicons/primeicons.css";
 import "primereact/resources/themes/bootstrap4-light-blue/theme.css";
 import "../styles/login.css";
-import { Password } from 'primereact/password';
- 
-
-
+import logo from '../img/aa.jpg';
 
 
 export default function LogIn() {
 
-    const [checked1, setChecked1] = useState(false);
-    const [checked2, setChecked2] = useState(false);
-    const [radioValue1, setRadioValue1] = useState('');
-    const [radioValue2, setRadioValue2] = useState('');
-    const [value13, setValue13] = useState('');
-
-
     return (
-        <div className='login'>
-            <div className="card">
-                <h2>hellow🙌</h2>
-                <div className="grid p-fluid">
-                    <div className="col-12 md:col-4">
-                        <div className="p-inputgroup">
-                            <span className="p-inputgroup-addon">
-                                <i className="pi pi-user"></i>
-                            </span>
-                            <InputText placeholder="Username" />
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <br />
-            <div className="field col-12 md:col-4">
-                <span className="p-float-label">
-                    <Password inputId="password" value={value13} onChange={(e) => setValue13(e.target.value)} />
-                    <label htmlFor="password">Password</label>
-                </span>
-            </div>
+        <div className="wrapper fadeInDown">
+            <div id="formContent">
 
+                <div className="fadeIn first">
+                    <img src={logo} id="icon" alt="User Icon" />
+                </div>
+
+                <form>
+                    <input type="text" id="login" className="fadeIn second" name="login" placeholder="Identity" />
+                    <input type="text" id="password" className="fadeIn third" name="login" placeholder="Password" />
+                    <input type="submit" className="fadeIn fourth" value="Log In" />
+                </form>
+
+                <div id="formFooter">
+                    <a className="underlineHover" href="#">Forgot Password?</a>
+                </div>
+
+            </div>
         </div>
     );
 }
