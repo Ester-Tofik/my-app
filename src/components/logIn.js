@@ -1,12 +1,33 @@
-import React from 'react';
+import React, { useState } from 'react';
 import "primereact/resources/themes/lara-light-indigo/theme.css";  //theme
 import "primeicons/primeicons.css";
 import "primereact/resources/themes/bootstrap4-light-blue/theme.css";
 import "../styles/login.css";
 import logo from '../img/aa.jpg';
+import { connect } from 'react-redux';
+import { saveInRedax } from '../action/action';
+import { logInByEmailAndPassword } from '../api/userApi';
 
 
-export default function LogIn() {
+export default function LogIn(props) {
+
+    const [id, setId] = useState(" ");
+    const [password, setPassword] = useState(" ");
+
+    const getUserByEmailAndPassword = async (id, password) => {
+        debugger;
+        const currentUser = await logInByEmailAndPassword(id, password);
+        console.log(currentUser);
+        // saveInRedax(user.result);
+    }
+
+    const mapStateToProps = ({ user }) => {
+        return {
+            ...user
+        };
+    }
+
+    connect(mapStateToProps, { saveInRedax })(LogIn);
 
     return (
         <div className="wrapper fadeInDown">
@@ -14,11 +35,12 @@ export default function LogIn() {
                 <div className="fadeIn first">
                     <img src={logo} id="icon" alt="User Icon" />
                 </div>
-                <form>
-                    <input type="text" id="login" className="fadeIn second" name="login" placeholder="Identity" /><br />
-                    <input type="password" id="password" className="fadeIn third" name="login" placeholder="Password" />
+                <form onSubmit = { getUserByEmailAndPassword(id, password) }>
+                    <input type="text" id="login" className="fadeIn second" name="login" placeholder="Identity" onChange={e => setId(e.target.value)} />
+                    <br />
+                    <input type="password" id="password" className="fadeIn third" name="login" placeholder="Password" onChange={e => setPassword(e.target.value)} />
                     <br /><br />
-                    <input type="submit" className="fadeIn fourth" value="Log In" />
+                    <input type="submit" className="fadeIn fourth" value="Log In" onClick = { getUserByEmailAndPassword(id, password) }/>
                 </form>
                 <div id="formFooter">
                     <a className="underlineHover" href="#">create new user</a>

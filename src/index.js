@@ -5,14 +5,18 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import LogIn from './components/logIn'
 import { Dialog } from 'primereact/dialog';
-import FloatLabelDemo from './components/a'
+import { userReducer } from './reducer/reducer';
+import { createStore , applyMiddleware } from 'redux';
+import { Provider } from 'react-redux'
+
+
+const store = createStore(userReducer, applyMiddleware());
 
 ReactDOM.render(
   <React.StrictMode>
-    {/* <App /> */}
-    {/* <FloatLabelDemo/> */}
-    <LogIn/>
-
+    <Provider store={store}>
+      <LogIn />
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
