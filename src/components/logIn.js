@@ -6,8 +6,7 @@ import "../styles/login.css";
 import logo from '../img/aa.jpg';
 import { connect } from 'react-redux';
 import { saveInRedax } from '../action/action';
-import { logInByEmailAndPassword } from '../api/userApi';
-
+import { logInByEmailAndPassword } from '../api/userService';
 
 export default function LogIn(props) {
 
@@ -18,7 +17,7 @@ export default function LogIn(props) {
         debugger;
         const currentUser = await logInByEmailAndPassword(id, password);
         console.log(currentUser);
-        // saveInRedax(user.result);
+        //  saveInRedax(user.result);
     }
 
     const mapStateToProps = ({ user }) => {
@@ -35,12 +34,12 @@ export default function LogIn(props) {
                 <div className="fadeIn first">
                     <img src={logo} id="icon" alt="User Icon" />
                 </div>
-                <form onSubmit = { getUserByEmailAndPassword(id, password) }>
+                <form onSubmit={() => getUserByEmailAndPassword(id, password)}>
                     <input type="text" id="login" className="fadeIn second" name="login" placeholder="Identity" onChange={e => setId(e.target.value)} />
                     <br />
                     <input type="password" id="password" className="fadeIn third" name="login" placeholder="Password" onChange={e => setPassword(e.target.value)} />
                     <br /><br />
-                    <input type="submit" className="fadeIn fourth" value="Log In" onClick = { getUserByEmailAndPassword(id, password) }/>
+                    <input type="submit" className="fadeIn fourth" value="Log In" />
                 </form>
                 <div id="formFooter">
                     <a className="underlineHover" href="#">create new user</a>

@@ -1,9 +1,10 @@
 
 export const logInByEmailAndPassword = (id, password) => {
     debugger;
-    fetch(`http://localhost:3000/user?id=${id}&password=${password}`)
+    const url=`http://localhost:3000/user/${id}/${password}`
+    fetch(url)
         .then(response => {
-            if (response.status == 204) {
+            if (response.text = 'ok') {
                 console.log("return sucssesfully");
             }
             if (response.ok) {
