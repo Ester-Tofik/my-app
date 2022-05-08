@@ -82,7 +82,7 @@ html {
   
   /* FORM TYPOGRAPHY*/
   
-  input[type=button], input[type=submit], input[type=reset]  {
+  input[type=button], input[type=submit], input[type=reset], input[type=date]  {
     background-color: #652974;
     border: none;
     color: rgb(233, 232, 232);
@@ -107,6 +107,7 @@ html {
   input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover  {
     background-color: #4d2457;
   }
+
   
   input[type=button]:active, input[type=submit]:active, input[type=reset]:active  {
     -moz-transform: scale(0.95);
@@ -116,6 +117,26 @@ html {
     transform: scale(0.95);
   }
   
+  input[type=date] {
+    background-color: #d3d3d388;
+    border: none;
+    color: #0d0d0d;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 5px;
+    width: 85%;
+    border: 2px solid #f6f6f6;
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -ms-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    transition: all 0.5s easergb-in-out;
+    -webkit-border-radius: 5px 5px 5px 5px;
+    border-radius: 5px 5px 5px 5px;
+  }
   input[type=text], input[type=password] {
     background-color: #d3d3d388;
     border: none;
@@ -144,6 +165,7 @@ html {
   
   input[type=text]:placeholder {
     color: #cccccc;
+
   }
   input[type=password]:focus {
     background-color: #e7dcf3;
@@ -151,6 +173,14 @@ html {
   }
   
   input[type=password]:placeholder {
+    color: #cccccc;
+  }
+  input[type=date]:focus {
+    background-color: #e7dcf3;
+    border-bottom: 2px solid #632e68;
+  }
+  
+  input[type=date]:placeholder {
     color: #cccccc;
   }
   

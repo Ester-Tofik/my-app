@@ -8,6 +8,7 @@ import { Dialog } from 'primereact/dialog';
 import { userReducer } from './reducer/reducer';
 import { createStore , applyMiddleware } from 'redux';
 import { Provider } from 'react-redux'
+import SignUp from './components/signUp';
 
 
 const store = createStore(userReducer, applyMiddleware());
@@ -15,7 +16,8 @@ const store = createStore(userReducer, applyMiddleware());
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <LogIn />
+      {/* <LogIn /> */}
+      <SignUp/>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')
