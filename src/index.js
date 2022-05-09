@@ -6,9 +6,11 @@ import reportWebVitals from './reportWebVitals';
 import LogIn from './components/logIn'
 import { Dialog } from 'primereact/dialog';
 import { userReducer } from './reducer/reducer';
-import { createStore , applyMiddleware } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux'
 import SignUp from './components/signUp';
+import { Route ,BrowserRouter} from 'react-router-dom';
+import HomePage from "./components/homePage";
 
 
 const store = createStore(userReducer, applyMiddleware());
@@ -16,9 +18,13 @@ const store = createStore(userReducer, applyMiddleware());
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      {/* <LogIn /> */}
-      <SignUp/>
     </Provider>
+    <BrowserRouter>
+        <Route path='/' component={LogIn} exact />        
+        <Route path='/signUp' component ={SignUp} />
+        <Route path='/home' component ={HomePage} />
+
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
 );

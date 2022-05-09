@@ -7,6 +7,7 @@ import logo from '../img/aa.jpg';
 import { connect } from 'react-redux';
 import { saveInRedax } from '../action/action';
 import { logInByEmailAndPassword } from '../api/userService';
+import { useHistory } from "react-router-dom";
 
 export default function LogIn(props) {
 
@@ -19,7 +20,10 @@ export default function LogIn(props) {
         console.log(currentUser);
         //  saveInRedax(user.result);
     }
-
+    const history = useHistory();
+    const signUp = () => {
+        history.push('/signUp');
+    }
     const mapStateToProps = ({ user }) => {
         return {
             ...user
@@ -42,7 +46,7 @@ export default function LogIn(props) {
                     <input type="submit" className="fadeIn fourth" value="Log In" />
                 </form>
                 <div id="formFooter">
-                    <a className="underlineHover" href="#">create new user</a>
+                    <a className="underlineHover" href="#" onClick={() => signUp()}>create new user</a>
                 </div>
             </div>
         </div>

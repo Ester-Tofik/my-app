@@ -6,6 +6,7 @@ import "../styles/login.css";
 import logo from '../img/aa.jpg';
 import { useEffect, useState } from "react";
 import { signUpApi } from "../api/userService";
+import { Calendar } from 'primereact/calendar';
 
 
 export default function SignUp() {
@@ -15,7 +16,7 @@ export default function SignUp() {
 	const [email, setEmail] =useState("");
 	const [password, setPassword] =useState("");
 	const [phoneNumber, setPhoneNumber] =useState("");
-	const [birthDate, setBirthDate] =useState("");
+	const [birthDate, setBirthDate] =useState(null)
 
 	useEffect(() => {
 		console.log(firstName, lastName, id, email, password, phoneNumber, birthDate)
@@ -37,6 +38,7 @@ export default function SignUp() {
 				<input type="text" id="login" className="fadeIn second" name="login" placeholder="Identity" onChange={e => setId(e.target.value)}/><br />
 				<input type="text" id="login" className="fadeIn second" name="login" placeholder="email" onChange={e => setEmail(e.target.value)}/><br />
 				<input type="text" id="login" className="fadeIn second" name="login" placeholder="phone" onChange={e => setPhoneNumber(e.target.value)}/><br />
+				{/* <Calendar id="basic" value={birthDate} onChange={(e) => setBirthDate(e.value)} /> */}
 				<input type="date" id="login" className="fadeIn second" name="login" placeholder="birthdate" onChange={e => setBirthDate(e.target.value)}/><br />
 				<input type="password" id="password" className="fadeIn third" name="login" placeholder="Password" onChange={e => setPassword(e.target.value)} /><br />
 				<br />
