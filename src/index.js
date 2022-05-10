@@ -13,7 +13,7 @@ import { Route, BrowserRouter } from 'react-router-dom';
 import HomePage from "./components/homePage";
 import MenuButton from './components/menu';
 import EditUserDetails from './components/editUserDetails';
-
+import ReminderManagement from './components/ReminderManagement';
 
 const store = createStore(userReducer, applyMiddleware());
 
@@ -27,6 +27,7 @@ ReactDOM.render(
       <Route path='/home' component={HomePage} />
       <Route path='/menu' component={MenuButton} />
       <Route path='/edit' component={EditUserDetails}/>
+      <Route path='/reminderManagement' component={ReminderManagement}/>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
