@@ -6,7 +6,7 @@ import "../styles/login.css";
 import logo from '../img/aa.jpg';
 import { useEffect, useState } from "react";
 import { signUpApi } from "../api/userService";
-import { Calendar } from 'primereact/calendar';
+// import { Calendar } from 'primereact/calendar';
 
 
 export default function SignUp() {
@@ -32,7 +32,7 @@ export default function SignUp() {
 			<div className="fadeIn first">
 				<img src={logo} id="icon" alt="User Icon" />
 			</div>
-			<form>
+			{/* <form> */}
 				<input type="text" id="login" className="fadeIn second" name="login" placeholder="first name" onChange={e => setFirstName(e.target.value)}/><br />
 				<input type="text" id="login" className="fadeIn second" name="login" placeholder="last name" onChange={e => setLastName(e.target.value)}/><br />
 				<input type="text" id="login" className="fadeIn second" name="login" placeholder="Identity" onChange={e => setId(e.target.value)}/><br />
@@ -43,7 +43,7 @@ export default function SignUp() {
 				<input type="password" id="password" className="fadeIn third" name="login" placeholder="Password" onChange={e => setPassword(e.target.value)} /><br />
 				<br />
 				<input type="submit" className="fadeIn fourth" value="register" onClick={() => {signUp()}}/>
-			</form>
+			{/* </form> */}
 		</div>
 	</div>
   );
