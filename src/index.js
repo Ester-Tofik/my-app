@@ -9,8 +9,9 @@ import { userReducer } from './reducer/reducer';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux'
 import SignUp from './components/signUp';
-import { Route ,BrowserRouter} from 'react-router-dom';
+import { Route, BrowserRouter } from 'react-router-dom';
 import HomePage from "./components/homePage";
+import EditUserDetails from './components/editUserDetails';
 
 
 const store = createStore(userReducer, applyMiddleware());
@@ -20,10 +21,10 @@ ReactDOM.render(
     <Provider store={store}>
     </Provider>
     <BrowserRouter>
-        <Route path='/' component={LogIn} exact />        
-        <Route path='/signUp' component ={SignUp} />
-        <Route path='/home' component ={HomePage} />
-
+      <Route path='/' component={LogIn} exact />
+      <Route path='/signUp' component={SignUp} />
+      <Route path='/home' component={HomePage} />
+      <Route path='/edit' component={EditUserDetails}/>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
