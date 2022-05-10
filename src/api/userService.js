@@ -1,21 +1,16 @@
-
-export const logInByEmailAndPassword = (id, password) => {
-    const url=`http://localhost:3000/user/${id}/${password}`
-    fetch(url)
-        .then(response => {
-            if (response.text = 'ok') {
-                console.log("return sucssesfully");
-            }
-            if (response.ok) {
-                return response.json();
-            }
-            else {
-                throw new Error("status Code is:" + response.status);
-            }
-        })
-        .then(data => {
-            console.log(data);
-        })
+export const logInByEmailAndPassword = async (id, password) => {
+    debugger
+    try {
+        debugger
+        const url = `http://localhost:3000/user/${id}/${password}`;
+        const response = await fetch(url);
+        const data = await response.json();
+        console.log("return sucssesfully");
+        console.log(data);
+    }
+    catch(err) {
+        throw new Error("status Code is:" + err);
+    }
 }
 
 export const signUpApi = (id, password, firstName, lastName, phoneNumber, birthDate, email) => {
@@ -50,3 +45,5 @@ export const signUpApi = (id, password, firstName, lastName, phoneNumber, birthD
             console.log(data);
         })
 }
+
+
