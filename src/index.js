@@ -29,7 +29,6 @@ ReactDOM.render(
     <Provider store={store}>
       <App />
     </Provider>
-<<<<<<< HEAD
     <BrowserRouter>
       <Route path='/' component={LogIn} exact />
       <Route path='/signUp' component={SignUp} />
@@ -43,15 +42,12 @@ ReactDOM.render(
       <Route path='/askADoctor' component={AskADoctor} />
       <Route path='/reminderManagement' component={ReminderManagement}/>
     </BrowserRouter>
-=======
->>>>>>> 72cf54e262fad2979aa696c1fa05e27086a31dc1
+
   </React.StrictMode>,
   document.getElementById('root')
 );
 
-<<<<<<< HEAD
 reportWebVitals();
-=======
 // ReactDOM.render(
 //   <React.StrictMode>
 //     {/* <Provider store={store}>
@@ -76,4 +72,3 @@ reportWebVitals();
 //   document.getElementById('root')
 // );
 
->>>>>>> 72cf54e262fad2979aa696c1fa05e27086a31dc1

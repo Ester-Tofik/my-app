@@ -15,12 +15,10 @@ function LogIn(props) {
     const [password, setPassword] = useState("");
 
     async function getUserByEmailAndPassword() {
-<<<<<<< HEAD
         const currentUser = await logInByEmailAndPassword(id, password);
         console.log(currentUser);
         history.push('/home');
         //  saveInRedax(user.result);
-=======
         await logInByEmailAndPassword(id, password).then(user => {
             console.log(user);
             console.log(saveInRedax(user), "user in redux");
@@ -37,7 +35,6 @@ function LogIn(props) {
         props.saveBirthDate(user.birthDate)
         props.saveMedicines(user.medicines)
         props.save_id(user._id)
->>>>>>> 72cf54e262fad2979aa696c1fa05e27086a31dc1
     }
 
     useEffect(() => {
@@ -55,21 +52,11 @@ function LogIn(props) {
                 <div className="fadeIn first">
                     <img src={logo} id="icon" alt="User Icon" />
                 </div>
-<<<<<<< HEAD
-                {/* <form> */}
-                    <input type="text" id="login" className="fadeIn second" name="login" placeholder="Identity" onChange={e => setId(e.target.value)} />
-                    <br />
-                    <input type="password" id="password" className="fadeIn third" name="login" placeholder="Password" onChange={e => setPassword(e.target.value)} />
-                    <br /><br />
-                    <input type="submit" className="fadeIn fourth" value="Log In" onClick={getUserByEmailAndPassword} />
-                {/* </form> */}
-=======
                 <input type="text" id="login" className="fadeIn second" name="login" placeholder="Identity" onChange={e => setId(e.target.value)} />
                 <br />
                 <input type="password" id="password" className="fadeIn third" name="login" placeholder="Password" onChange={e => setPassword(e.target.value)} />
                 <br /><br />
                 <input type="submit" className="fadeIn fourth" value="Log In" onClick={() => getUserByEmailAndPassword()} />
->>>>>>> 72cf54e262fad2979aa696c1fa05e27086a31dc1
                 <div id="formFooter">
                     <a className="underlineHover" href="#" onClick={() => signUp()}>create new user</a>
                 </div>
