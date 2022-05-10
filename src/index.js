@@ -30,19 +30,16 @@ ReactDOM.render(
       <Route path='/signUp' component={SignUp} />
       <Route path='/home' component={HomePage} />
       <Route path='/menu' component={MenuButton} />
-
       <Route path='/edit' component={EditUserDetails} />
       <Route path='/medicince' component={Medicines} />
       <Route path='/indices' component={Indices} />
       <Route path='/information' component={Information} />
       <Route path='/drinkingWater' component={DrinkingWater} />
       <Route path='/askADoctor' component={AskADoctor} />
-      <Route path='/edit' component={EditUserDetails}/>
       <Route path='/reminderManagement' component={ReminderManagement}/>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
 );
-
 
 reportWebVitals();

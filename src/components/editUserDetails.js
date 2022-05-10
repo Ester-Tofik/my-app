@@ -22,8 +22,9 @@ export default function EditUserDetails() {
 		console.log(firstName, lastName, id, email, password, phoneNumber, birthDate)
 	  }, [firstName, lastName, id, email, password, phoneNumber, birthDate]);
 
-	  const signUp = () => {
-		  updateUserDetails(id, password, firstName, lastName, phoneNumber, birthDate, email);
+	 async function update(){
+		 const updatedUser = await updateUserDetails(id, password, firstName, lastName, phoneNumber, birthDate, email);
+		 console.log(updatedUser);
 	  }
 	return (
 		<div className="wrapper fadeInDown">
@@ -42,7 +43,7 @@ export default function EditUserDetails() {
 				<input type="date" id="login" className="fadeIn second" name="login" placeholder="birthdate" onChange={e => setBirthDate(e.target.value)}/><br />
 				<input type="password" id="password" className="fadeIn third" name="login" placeholder="Password" onChange={e => setPassword(e.target.value)} /><br />
 				<br />
-				<input type="submit" className="fadeIn fourth" value="save" onClick={signUp}/>
+				<input type="submit" className="fadeIn fourth" value="save" onClick={update}/>
 			</form>
 		</div>
 	</div>
