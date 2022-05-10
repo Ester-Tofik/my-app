@@ -7,11 +7,12 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
-import PersonAdd from '@mui/icons-material/PersonAdd';
 import Logout from '@mui/icons-material/Logout';
 import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
 import ModeEditIcon from '@mui/icons-material/ModeEdit';
 import PermIdentityTwoToneIcon from '@mui/icons-material/PermIdentityTwoTone';
+import { useHistory } from "react-router-dom";
+import HomeIcon from '@mui/icons-material/Home';
 
 export default function AccountMenu() {
     const [anchorEl, setAnchorEl] = React.useState(null);
@@ -19,9 +20,25 @@ export default function AccountMenu() {
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
     };
+
     const handleClose = () => {
         setAnchorEl(null);
     };
+
+    const history = useHistory();
+    const navigatToEdit =()=> {
+        history.push('/edit')
+    }
+    const navigatToHome =()=> {
+        history.push('/home')
+    }
+    const navigatToLogIn = () => {
+        history.push('/');
+    }
+    const navigatToReminderManagement = () => {
+        history.push('/reminderManagement');
+    }
+    
     return (
         <React.Fragment>
             <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
@@ -36,7 +53,7 @@ export default function AccountMenu() {
                         aria-haspopup="true"
                         aria-expanded={open ? 'true' : undefined}
                     >
-                        <Avatar sx={{ width: 32, height: 32 }}>M</Avatar>
+                        <Avatar sx={{ width: 32, height: 32 }}>P</Avatar>
                     </IconButton>
                 </Tooltip>
             </Box>
@@ -78,23 +95,23 @@ export default function AccountMenu() {
                 <MenuItem>
                     <PermIdentityTwoToneIcon color="action" /> Profile
                 </MenuItem>
-                <MenuItem>
+                <MenuItem onClick={navigatToEdit} >
                     < ModeEditIcon color="action"/>   עריכת הפרטים שלי
                 </MenuItem>
                 <Divider />
-                <MenuItem>
+                <MenuItem onClick={navigatToHome}>
                     <ListItemIcon>
-                        <PersonAdd fontSize="small" />
+                        <HomeIcon fontSize="small" />
                     </ListItemIcon>
-                    Add another account
+                   דף הבית 
                 </MenuItem>
-                <MenuItem>
+                <MenuItem onClick={navigatToReminderManagement}>
                     <ListItemIcon>
                         <NotificationsActiveIcon fontSize="small" />
                     </ListItemIcon>
                     ניהול תזכורות
                 </MenuItem>
-                <MenuItem>
+                <MenuItem onClick={navigatToLogIn}>
                     <ListItemIcon>
                         <Logout fontSize="small" />
                     </ListItemIcon>

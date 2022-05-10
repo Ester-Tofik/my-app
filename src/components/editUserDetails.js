@@ -7,7 +7,7 @@ import logo from '../img/aa.jpg';
 import { useEffect, useState } from "react";
 import { updateUserDetails } from "../api/userService";
 // import { Calendar } from 'primereact/calendar';
-
+import AccountMenu from "./menu";
 
 export default function EditUserDetails() {
 	const [firstName, setFirstName] = useState("");
@@ -29,6 +29,7 @@ export default function EditUserDetails() {
 		<div className="wrapper fadeInDown">
 		<div id="formContent">
 			<div className="fadeIn first">
+				<AccountMenu></AccountMenu>
 				<img src={logo} id="icon" alt="User Icon" />
 			</div>
 			<form>
