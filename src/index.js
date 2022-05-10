@@ -12,6 +12,8 @@ import SignUp from './components/signUp';
 import { Route, BrowserRouter } from 'react-router-dom';
 import HomePage from "./components/homePage";
 import MenuButton from './components/menu';
+import EditUserDetails from './components/editUserDetails';
+
 
 const store = createStore(userReducer, applyMiddleware());
 
@@ -24,12 +26,11 @@ ReactDOM.render(
       <Route path='/signUp' component={SignUp} />
       <Route path='/home' component={HomePage} />
       <Route path='/menu' component={MenuButton} />
+      <Route path='/edit' component={EditUserDetails}/>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+
 reportWebVitals();
