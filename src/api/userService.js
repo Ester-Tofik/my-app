@@ -54,7 +54,6 @@ export const signUpApi = async (id, password, firstName, lastName, phoneNumber, 
             email: email
         }
         try {
-            debugger
             const _id = `627a3dd78c48dc9a4377a1ef`;
             const url = `http://localhost:3000/user/${_id}`;
             const response = await fetch(url, {
@@ -66,6 +65,7 @@ export const signUpApi = async (id, password, firstName, lastName, phoneNumber, 
             });
             const updateUser = response.json();
             console.log(updateUser);
+            return updateUser;
         }
         catch (err) {
             throw new Error("status Code is:" + err);
