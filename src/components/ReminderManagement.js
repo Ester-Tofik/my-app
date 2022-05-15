@@ -1,7 +1,7 @@
 import * as React from 'react';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Switch from '@material-ui/core/Switch';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import '../styles/ReminderManagement.css';
 import Checkbox from '@mui/material/Checkbox';
 import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
@@ -11,13 +11,9 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import AccountMenu from "./menu";
-import ReactAudioPlayer from 'react-audio-player';
-import useSound from 'use-sound'
-
-// const  soundfile  require('../audio/1.mp3') 
+// import a from '../audio/1.mp3';
 // import saveReminderManageMentFetch from '../api/reminderService';
 import { useHistory } from 'react-router-dom';
-import { useEffect } from 'react';
 
 // const alarm = new Audio(soundfile);
 
@@ -27,15 +23,14 @@ export default function ReminderManagement() {
     const [snooze, setSnooze] = React.useState('');
     const [soundvoice, setSoundvoice] = React.useState('');
     const [reminder, setReminder] = React.useState('');
-    const [IfSnooze, setIfSnooze] = React.useState(false);
+    const [ifSnooze, setIfSnooze] = React.useState(false);
     const [state, setState] = useState({
         checkedB: true,
     });
-    const [checked, setChecked] = React.useState(true);
     const history = useHistory();
     useEffect(() => {
         console.log(state);
-    }, [state, snooze, IfSnooze, checked])
+    }, [state, snooze, ifSnooze])
     const handleChange = name => event => {
         setState({ ...state, [name]: event.target.checked });
     };
@@ -49,18 +44,22 @@ export default function ReminderManagement() {
         setReminder(event.target.value);
     };
     const handleChangeIfSnooze = (event) => {
-        setChecked(event.target.value);
-    };
-
+        if (ifSnooze) {
+            setIfSnooze(false);
+        }
+        else {
+            setIfSnooze(true);
+        }
+    }
+   
     async function saveReminderManageMent() {
-        // const currentUser = await saveReminderManageMentFetch(user._id);
+        // const currentUser = await saveRemin[derManageMentFetch(user._id);
         // console.log(currentUser);
         history.push('/home');
         //  saveInRedax(user.result);
     }
 
     return (
-
         <div className="wrapper fadeInDown">
             {/* </AccountMenu> */}
             <div id="formContent">
@@ -90,7 +89,6 @@ export default function ReminderManagement() {
                                 <MenuItem value={30}>30</MenuItem>
                             </Select>
                         </FormControl>
-
                         <div>:בחר צליל לתזכורות שלך</div>
                         <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
                             <InputLabel id="demo-select-small"> צליל</InputLabel>
@@ -99,9 +97,9 @@ export default function ReminderManagement() {
                                     <em>בחר צליל</em>
                                 </MenuItem>
                                 <MenuItem value={10}>
-                                    <ReactAudioPlayer controls >
+                                    <audio controls >
                                         <source src='../audio/1.mp3' type="audio/mp3"></source>
-                                    </ReactAudioPlayer>
+                                    </audio>
                                 </MenuItem>
                                 <MenuItem value={20}>
                                     <audio controls>
