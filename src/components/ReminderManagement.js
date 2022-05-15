@@ -12,13 +12,13 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import AccountMenu from "./menu";
 // import a from '../audio/1.mp3';
-// import saveReminderManageMentFetch from '../api/reminderService';
+import saveReminderManageMentFetch from '../api/reminderService';
 import { useHistory } from 'react-router-dom';
 
 // const alarm = new Audio(soundfile);
 
 export default function ReminderManagement() {
-    debugger
+    
     const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
     const [snooze, setSnooze] = React.useState('');
     const [soundvoice, setSoundvoice] = React.useState('');
@@ -53,8 +53,8 @@ export default function ReminderManagement() {
     }
    
     async function saveReminderManageMent() {
-        // const currentUser = await saveRemin[derManageMentFetch(user._id);
-        // console.log(currentUser);
+        const currentUser = await saveReminderManageMentFetch("627aa35eb7ccf573d3151620", state, ifSnooze, snooze, soundvoice, reminder);
+        console.log(currentUser);
         history.push('/home');
         //  saveInRedax(user.result);
     }
@@ -83,10 +83,10 @@ export default function ReminderManagement() {
                                 <MenuItem value="">
                                     <em>בחר דקות</em>
                                 </MenuItem>
-                                <MenuItem value={10}>5</MenuItem>
-                                <MenuItem value={20}>10</MenuItem>
-                                <MenuItem value={30}>15</MenuItem>
-                                <MenuItem value={30}>20</MenuItem>
+                                <MenuItem value={5}>5</MenuItem>
+                                <MenuItem value={10}>10</MenuItem>
+                                <MenuItem value={15}>15</MenuItem>
+                                <MenuItem value={20}>20</MenuItem>
                                 <MenuItem value={30}>30</MenuItem>
                             </Select>
                         </FormControl>
@@ -131,15 +131,15 @@ export default function ReminderManagement() {
                                 <MenuItem value="">
                                     <em>בחר דקות</em>
                                 </MenuItem>
-                                <MenuItem value={10}>0</MenuItem>
-                                <MenuItem value={20}>2</MenuItem>
-                                <MenuItem value={30}>5</MenuItem>
-                                <MenuItem value={30}>10</MenuItem>
-                                <MenuItem value={30}>15</MenuItem>
+                                <MenuItem value={0}>0</MenuItem>
+                                <MenuItem value={2}>2</MenuItem>
+                                <MenuItem value={5}>5</MenuItem>
+                                <MenuItem value={10}>10</MenuItem>
+                                <MenuItem value={15}>15</MenuItem>
                             </Select>
                         </FormControl>
                         <div>לפני זמן המשימה </div><br /><br /><br />
-                        <input type="submit" className="fadeIn fourth" value="save" onSubmit={saveReminderManageMent} />
+                        <input type="submit" className="fadeIn fourth" value="save" onClick={saveReminderManageMent} />
                         <AccountMenu />
                     </div>)}
             </div>

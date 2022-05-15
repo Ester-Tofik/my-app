@@ -1,17 +1,17 @@
 
-export async function saveReminderManageMentFetch(_id, userWantReminders, automaticOscillation, snooze,
+export default async function saveReminderManageMentFetch(_id, userWantReminders, automaticOscillation, snooze,
     sound, PreTaskReminder, props) {
         debugger
     let reminder = {
-        userWantReminders: userWantReminders,
+        userWantReminders: userWantReminders.checkedB,
         automaticOscillation: automaticOscillation,
         snooze: snooze,
         sound: sound,
         PreTaskReminder: PreTaskReminder
     }
         try {
-            // const _id = `627a3dd78c48dc9a4377a1ef`;
-            const url = `http://localhost:3000/reminder/${props.user._id}`;
+            //const _id = `627aa35eb7ccf573d3151620`;
+            const url = `http://localhost:3000/reminder/${_id}`;
             const response = await fetch(url, {
                 method: "PUT",
                 headers: {
@@ -21,6 +21,7 @@ export async function saveReminderManageMentFetch(_id, userWantReminders, automa
             });
             const updateUser = response.json();
             console.log(updateUser);
+            return updateUser;
         }
         catch (err) {
             throw new Error("status Code is:" + err);
