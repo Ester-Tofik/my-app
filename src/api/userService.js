@@ -67,20 +67,9 @@ export const signUpApi = async (id, password, firstName, lastName, phoneNumber, 
             console.log(updateUser);
             return updateUser;
         }
+        
         catch (err) {
             throw new Error("status Code is:" + err);
         }
-        // fetch("../api/User/" + JSON.parse(sessionStorage.getItem('currentUser'))._id, {
-        //        method: "PUT",
-        //        headers: {
-        //        'Content-Type': 'application/json'
-        //    },
-        // body: JSON.stringify(changedUser)
-        // }).then((response) => {
-        //        if (response.ok) {
-        //             sessionStorage.setItem('currentUser', JSON.stringify(changedUser))
-        //             alert("your new details is:" + JSON.stringify(changedUser))
-        //         }
-        //        else { throw new Error("your details isn't update") }
-        //     })
+
     }
