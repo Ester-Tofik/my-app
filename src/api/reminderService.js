@@ -1,6 +1,7 @@
 
 export async function saveReminderManageMentFetch(_id, userWantReminders, automaticOscillation, snooze,
     sound, PreTaskReminder, props) {
+        debugger
     let reminder = {
         userWantReminders: userWantReminders,
         automaticOscillation: automaticOscillation,

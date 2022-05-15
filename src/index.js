@@ -16,7 +16,6 @@ import Indices from './components/indices';
 import Information from './components/information';
 import DrinkingWater from './components/DrinkingWater';
 import AskADoctor from './components/AskADoctor';
-
 import ReminderManagement from './components/ReminderManagement';
 
 const store = createStore(userReducer, applyMiddleware());
