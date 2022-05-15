@@ -11,7 +11,7 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import AccountMenu from "./menu";
-import a from '../audio/1.mp3';
+// import a from '../audio/1.mp3';
 
 export default function ReminderManagement() {
     const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
@@ -75,29 +75,29 @@ export default function ReminderManagement() {
                                 <em>בחר צליל</em>
                             </MenuItem>
                             <MenuItem value={10}>
-                                <audio controls={true} autoPlay={true}>
-                                    <source src={a} type="audio/mp3"></source>
-                                </audio></MenuItem>
+                                <audio controls>
+                                    <source src="\1.mp3" type="audio/mp3" />
+                                </audio>
+                            </MenuItem>
                             <MenuItem value={20}>
                                 <audio controls>
-                                    <source src="../audio/2.mp3" type="audio/mpeg"></source>
+                                    {/* <source src="../audio/2.mp3" type="audio/mpeg"></source> */}
                                 </audio>
                             </MenuItem>
                             <MenuItem value={30}>
                                 <audio controls>
-                                    <source src="../audio/3.mp3" type="audio/mpeg"></source>
+                                    {/* <source src="../audio/3.mp3" type="audio/mpeg"></source> */}
                                 </audio>
                             </MenuItem>
                             <MenuItem value={30}>
                                 <audio controls>
-                                    <source src="../aFudio/4.mp3" type="audio/mpeg"></source>
+                                    {/* <source src="../aFudio/4.mp3" type="audio/mpeg"></source> */}
                                 </audio></MenuItem>
                             <MenuItem value={30}>
                                 <audio controls>
-                                    <source src="../audio/5.mp3" type="audio/mpeg"></source>
+                                    {/* <source src="../audio/5.mp3" type="audio/mpeg"></source> */}
                                 </audio>
                             </MenuItem>
-
                         </Select>
                     </FormControl>
                     <div>:הצג תזכורות </div>
@@ -119,7 +119,7 @@ export default function ReminderManagement() {
                     <AccountMenu />
                 </div>
             </div>
-        </div>
+        </div>        
     );
 }
 
