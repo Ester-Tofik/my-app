@@ -1,11 +1,11 @@
 import * as React from 'react';
 import Search from './search'
-
+import AddIcon from '@mui/icons-material/Add';
 import Checkbox from '@mui/material/Checkbox';
 import TextField from '@mui/material/TextField';
 import { Button } from '@material-ui/core';
-
-
+import Hours from './hours';
+import '../styles/medicationDetails.css'
 
 export default function MedicationDetails() {
     const [age, setAge] = React.useState('');
@@ -23,28 +23,29 @@ export default function MedicationDetails() {
             <div id="formContent">
                 <div className="fadeIn first">
                     :הוספת תרופה
-                    <br />
-                    <Search id="s" />
-                    בחר יום
-                    <Checkbox  {...label} defaultChecked />א
-                    <Checkbox  {...label} defaultChecked />ב
-                    <Checkbox  {...label} defaultChecked />ג
-                    <Checkbox  {...label} defaultChecked />ד
-                    <Checkbox  {...label} defaultChecked />ה
-                    <Checkbox  {...label} defaultChecked />ו
-                    <Checkbox  {...label} defaultChecked />ז
-                    <div>
-                        <TextField id="outlined-number" label="Number" type="number" onChange={e=>setAmount(Number(e.target.value))}
-                         InputLabelProps={{ inputProps:{min:'0',max:'10',step:'1'} }} />
-                         : מס' פעמים ביום
-                         <Button variant='contained' startIcon={<AddIcon/>} onClick={()=>setShow(true)}>
-                        Add
-                         </Button>
-                         {show && <Houres amount={amount}/>}
+                    <br /><br /><br />
+                    {/* <div id="s"> */}
+                        <Search >
+                            <p>:בחר יום</p>
+                            <Checkbox  {...label} defaultChecked />א
+                            <Checkbox  {...label} defaultChecked />ב
+                            <Checkbox  {...label} defaultChecked />ג
+                            <Checkbox  {...label} defaultChecked />ד
+                            <Checkbox  {...label} defaultChecked />ה
+                            <Checkbox  {...label} defaultChecked />ו
+                        </Search >
+                        <br/>
+                        {/* </div> */}
+                        <TextField id="outlined-number" label="Number" type="number" onChange={e => setAmount(Number(e.target.value))}
+                            InputLabelProps={{ inputProps: { min: '0', max: '10', step: '1' } }} />
+                        : מס' פעמים ביום<br />
+                        <Button variant='contained' startIcon={<AddIcon />} onClick={() => setShow(true)}>
+                            Add
+                        </Button>
+                        {show && (<Hours amount={amount} />)}
                     </div>
                 </div>
             </div>
-        </div>
     );
 }
 

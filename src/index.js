@@ -14,9 +14,9 @@ import EditUserDetails from './components/editUserDetails';
 import Medicines from './components/medicince';
 import Indices from './components/indices';
 import Information from './components/information';
-import DrinkingWater from './components/DrinkingWater';
-import AskADoctor from './components/AskADoctor';
-import ReminderManagement from './components/ReminderManagement';
+import DrinkingWater from './components/drinkingWater';
+import AskADoctor from './components/askADoctor';
+import ReminderManagement from './components/reminderManagement';
 import MedicationDetails from './components/medicationDetails';
 
 const store = createStore(userReducer, applyMiddleware());
