@@ -20,12 +20,10 @@ export default function LogIn(props) {
         history.push('/home');
         //  saveInRedax(user.result);
     }
-
+    
     useEffect(() => {
         console.log(id, password);
     }, [id, password])
-
-
 
     const history = useHistory();
     const signUp = () => {

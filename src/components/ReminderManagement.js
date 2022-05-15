@@ -15,18 +15,22 @@ import AccountMenu from "./menu";
 // import saveReminderManageMentFetch from '../api/reminderService';
 import { useHistory } from 'react-router-dom';
 
+// const alarm = new Audio(soundfile);
+
 export default function ReminderManagement() {
+    debugger
     const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
     const [snooze, setSnooze] = React.useState('');
     const [soundvoice, setSoundvoice] = React.useState('');
     const [reminder, setReminder] = React.useState('');
+    const [ifSnooze, setIfSnooze] = React.useState(false);
     const [state, setState] = useState({
-        checkedA: true,
         checkedB: true,
     });
-    const [ifSnooze, setIfSnooze] = useState(false);
     const history = useHistory();
-
+    useEffect(() => {
+        console.log(state);
+    }, [state, snooze, ifSnooze])
     const handleChange = name => event => {
         setState({ ...state, [name]: event.target.checked });
     };
@@ -47,9 +51,7 @@ export default function ReminderManagement() {
             setIfSnooze(true);
         }
     }
-    useEffect(() => {
-        console.log(ifSnooze);
-    }, [ifSnooze])
+   
     async function saveReminderManageMent() {
         // const currentUser = await saveRemin[derManageMentFetch(user._id);
         // console.log(currentUser);
@@ -66,11 +68,13 @@ export default function ReminderManagement() {
                         <Switch id='lime' checked={state.checkedB} onChange={handleChange('checkedB')} value="checkedB" />
                     }
                     label="הפעלת תזכורות" /> <br />
-                <div>
-                    הפעל נדנוד אוטומטי
-                    <Checkbox {...label} icon={<NotificationsActiveOutlinedIcon />} checkedIcon={<NotificationsActiveIcon />} onChange={handleChangeIfSnooze} />
-                    {ifSnooze &&
-                    <div>
+                {state.checkedB && (
+                    <div className='snooze'>
+                        הפעל נדנוד אוטומטי
+                        <Checkbox {...label} icon={<NotificationsActiveOutlinedIcon />} checkedIcon={<NotificationsActiveIcon />}
+                            //checked={checked}
+                            onChange={handleChangeIfSnooze} />
+
                         <div id="Snooze">הפעל נודניק כל </div>
                         <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
                             <InputLabel id="demo-select-small"> דקות</InputLabel>
@@ -85,7 +89,6 @@ export default function ReminderManagement() {
                                 <MenuItem value={30}>30</MenuItem>
                             </Select>
                         </FormControl>
-                        </div> }
                         <div>:בחר צליל לתזכורות שלך</div>
                         <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
                             <InputLabel id="demo-select-small"> צליל</InputLabel>
@@ -100,21 +103,21 @@ export default function ReminderManagement() {
                                 </MenuItem>
                                 <MenuItem value={20}>
                                     <audio controls>
-                                        {/* <source src="../audio/2.mp3" type="audio/mpeg"></source> */}
+                                        <source src="../audio/2.mp3" type="audio/mpeg"></source>
                                     </audio>
                                 </MenuItem>
                                 <MenuItem value={30}>
                                     <audio controls>
-                                        {/* <source src="../audio/3.mp3" type="audio/mpeg"></source> */}
+                                        <source src="../audio/3.mp3" type="audio/mpeg"></source>
                                     </audio>
                                 </MenuItem>
                                 <MenuItem value={30}>
                                     <audio controls>
-                                        {/* <source src="../aFudio/4.mp3" type="audio/mpeg"></source> */}
+                                        <source src="../aFudio/4.mp3" type="audio/mpeg"></source>
                                     </audio></MenuItem>
                                 <MenuItem value={30}>
                                     <audio controls>
-                                        {/* <source src="../audio/5.mp3" type="audio/mpeg"></source> */}
+                                        <source src="../audio/5.mp3" type="audio/mpeg"></source>
                                     </audio>
                                 </MenuItem>
                             </Select>
@@ -134,11 +137,9 @@ export default function ReminderManagement() {
                             </Select>
                         </FormControl>
                         <div>לפני זמן המשימה </div><br /><br /><br />
-                    
-                    <input type="submit" className="fadeIn fourth" value="save" onSubmit={saveReminderManageMent} />
-                    <AccountMenu />
-                </div>
-
+                        <input type="submit" className="fadeIn fourth" value="save" onSubmit={saveReminderManageMent} />
+                        <AccountMenu />
+                    </div>)}
             </div>
         </div>
     );
