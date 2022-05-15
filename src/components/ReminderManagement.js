@@ -74,7 +74,8 @@ export default function ReminderManagement() {
                         <Checkbox {...label} icon={<NotificationsActiveOutlinedIcon />} checkedIcon={<NotificationsActiveIcon />}
                             //checked={checked}
                             onChange={handleChangeIfSnooze} />
-
+             {ifSnooze && (
+                         <div>
                         <div id="Snooze">הפעל נודניק כל </div>
                         <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
                             <InputLabel id="demo-select-small"> דקות</InputLabel>
@@ -89,6 +90,7 @@ export default function ReminderManagement() {
                                 <MenuItem value={30}>30</MenuItem>
                             </Select>
                         </FormControl>
+                        </div>)}
                         <div>:בחר צליל לתזכורות שלך</div>
                         <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
                             <InputLabel id="demo-select-small"> צליל</InputLabel>
