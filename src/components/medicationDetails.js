@@ -1,40 +1,41 @@
 import * as React from 'react';
-import Box from '@mui/material/Box';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
+import Search from './search'
 
+import Checkbox from '@mui/material/Checkbox';
+import TextField from '@mui/material/TextField';
 
 
 
 export default function MedicationDetails() {
     const [age, setAge] = React.useState('');
+    const [amount, setAmount] = React.useState(' ');
 
     const handleChange = (event) => {
         setAge(event.target.value);
     };
 
+    const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
+
     return (
         <div className="wrapper fadeInDown">
             <div id="formContent">
                 <div className="fadeIn first">
-                    <Box sx={{ minWidth: 120 }}>
-                        <FormControl fullWidth>
-                            <InputLabel id="demo-simple-select-label">Age</InputLabel>
-                            <Select
-                                labelId="demo-simple-select-label"
-                                id="demo-simple-select"
-                                value={age}
-                                label="Age"
-                                onChange={handleChange}
-                            >
-                                <MenuItem value={10}>Ten</MenuItem>
-                                <MenuItem value={20}>Twenty</MenuItem>
-                                <MenuItem value={30}>Thirty</MenuItem>
-                            </Select>
-                        </FormControl>
-                    </Box>
+                    :הוספת תרופה
+                    <br />
+                    <Search id="s" />
+                    בחר יום
+                    <Checkbox  {...label} defaultChecked />א
+                    <Checkbox  {...label} defaultChecked />ב
+                    <Checkbox  {...label} defaultChecked />ג
+                    <Checkbox  {...label} defaultChecked />ד
+                    <Checkbox  {...label} defaultChecked />ה
+                    <Checkbox  {...label} defaultChecked />ו
+                    <Checkbox  {...label} defaultChecked />ז
+                    <div>
+                        <TextField id="outlined-number" label="Number" type="number" onChange={e=>setAmounts(Number(e.target.value))}
+                         InputLabelProps={{ inputProps:{min:'0',max:'10',step:'1'} }} />
+                         : מס' פעמים ביום
+                    </div>
                 </div>
             </div>
         </div>

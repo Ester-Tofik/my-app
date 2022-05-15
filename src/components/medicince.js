@@ -2,7 +2,7 @@ import AddIcon from '@mui/icons-material/Add';
 import * as React from 'react';
 import Button from '@mui/material/Button';
 import { useHistory } from "react-router-dom";
-
+ 
 
 export default function Medicines() {
 
