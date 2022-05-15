@@ -32,7 +32,7 @@ export default function MedicationDetails() {
                     <Checkbox  {...label} defaultChecked />ו
                     <Checkbox  {...label} defaultChecked />ז
                     <div>
-                        <TextField id="outlined-number" label="Number" type="number" onChange={e=>setAmounts(Number(e.target.value))}
+                        <TextField id="outlined-number" label="Number" type="number" onChange={e=>setAmount(Number(e.target.value))}
                          InputLabelProps={{ inputProps:{min:'0',max:'10',step:'1'} }} />
                          : מס' פעמים ביום
                     </div>
