@@ -11,13 +11,9 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import AccountMenu from "./menu";
-<<<<<<< HEAD
 // import a from '../audio/1.mp3';
-=======
-import a from '../audio/1.mp3';
 // import saveReminderManageMentFetch from '../api/reminderService';
 import { useHistory } from 'react-router-dom';
->>>>>>> cb306cae8f1b9bf32e7b7f45320a514709deb93c
 
 export default function ReminderManagement() {
     const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
