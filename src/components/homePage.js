@@ -8,6 +8,7 @@ import HelpCenterIcon from '@mui/icons-material/HelpCenter';
 import AssessmentIcon from '@mui/icons-material/Assessment';
 import '../styles/homePage.css';
 import { useHistory } from "react-router-dom";
+import HoverRating from './Rating';
 
 export default function HomePage() {
 
@@ -37,6 +38,7 @@ export default function HomePage() {
                     <div className="fadeIn first">
                     </div>
                     <AccountMenu />
+                    {/* <HoverRating/> */}
                     <Button variant="contained" endIcon={<MedicationIcon />} id="Button" onClick={navigateToMedicince}> תרופות</Button><br /><br />
                     <Button variant="contained" endIcon={<AssessmentIcon />} id="Button" onClick={navigateToIndices}> מדדים</Button><br /><br />
                     <Button variant="contained" endIcon={<InfoIcon />} id="Button" onClick={navigateToInformation}> מידע</Button><br /><br />

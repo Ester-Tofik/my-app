@@ -95,7 +95,7 @@ export default function ReminderManagement() {
                                 </MenuItem>
                                 <MenuItem value={10}>
                                     <audio controls="controls">
-                                        <source src="../../public/a.mp3" type="audio/mpeg" />
+                                        <source src="../../public/a.mp3" type="audio/mp3" />
                                     </audio>
                                 </MenuItem>
                                 <MenuItem value={20}>
