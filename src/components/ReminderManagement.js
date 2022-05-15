@@ -12,6 +12,8 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import AccountMenu from "./menu";
 import a from '../audio/1.mp3';
+// import saveReminderManageMentFetch from '../api/reminderService';
+import { useHistory } from 'react-router-dom';
 
 export default function ReminderManagement() {
     const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
@@ -22,6 +24,7 @@ export default function ReminderManagement() {
         checkedA: true,
         checkedB: true,
     });
+    const history = useHistory();
 
     const handleChange = name => event => {
         setState({ ...state, [name]: event.target.checked });
@@ -35,6 +38,13 @@ export default function ReminderManagement() {
     const handleChangeReminder = (event) => {
         setReminder(event.target.value);
     };
+
+    async function saveReminderManageMent() {
+       // const currentUser = await saveReminderManageMentFetch(user._id);
+       // console.log(currentUser);
+        history.push('/home');
+        //  saveInRedax(user.result);
+    }
 
     return (
 
@@ -107,15 +117,15 @@ export default function ReminderManagement() {
                             <MenuItem value="">
                                 <em>בחר דקות</em>
                             </MenuItem>
-                            <MenuItem value={10}>5</MenuItem>
-                            <MenuItem value={20}>10</MenuItem>
+                            <MenuItem value={10}>0</MenuItem>
+                            <MenuItem value={20}>2</MenuItem>
+                            <MenuItem value={30}>5</MenuItem>
+                            <MenuItem value={30}>10</MenuItem>
                             <MenuItem value={30}>15</MenuItem>
-                            <MenuItem value={30}>20</MenuItem>
-                            <MenuItem value={30}>30</MenuItem>
                         </Select>
                     </FormControl>
                     <div>לפני זמן המשימה </div><br /><br /><br />
-                    <input type="submit" className="fadeIn fourth" value="save" />
+                    <input type="submit" className="fadeIn fourth" value="save" onSubmit={saveReminderManageMent} />
                     <AccountMenu />
                 </div>
             </div>

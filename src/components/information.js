@@ -1,5 +1,8 @@
+
 export default function Information(){
     return (
-        <div>Information works!!</div>
+
+        <div>קישורים למידע 
+        </div>
     )
 }
