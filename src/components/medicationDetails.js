@@ -8,13 +8,9 @@ import Hours from './hours';
 import '../styles/medicationDetails.css';
 
 export default function MedicationDetails() {
-    const [age, setAge] = React.useState('');
     const [amounts, setAmounts] = React.useState(' ');
     const [show, setShow] = React.useState(false);
 
-    const handleChange = (event) => {
-        setAge(event.target.value);
-    };
 
     const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
@@ -37,12 +33,13 @@ export default function MedicationDetails() {
                     <Checkbox  {...label} defaultChecked />ו
                     <br /><br /><br />
                     {/* </div> */}
-                    <TextField id="outlined-number" label="Number" type="number" onChange={e => setAmounts(Number(e.target.value), setShow(true))}
-                        InputProps={{ inputProps: { min: '0', max: '10', step: '1' } }} />
-                    : מס' פעמים ביום<br />
+                    <TextField id="outlined-number" label={amounts} type="number" onChange={e => setAmounts(Number(e.target.value), setShow(true))}
+                        InputProps={{ inputProps: { min: '0', max: '5', step: '1' } }} />
+                   <span>     :מס' פעמים ביום     </span> <br />
                     <br /><br />
                     {show && (<Hours amount={amounts} />)}
                     <br /><br />
+                    
                     <Button id='buttonMui' variant='contained'  >Save</Button>
                 </div>
             </div>
