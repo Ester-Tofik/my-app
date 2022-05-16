@@ -18,7 +18,7 @@ import { useHistory } from 'react-router-dom';
 // const alarm = new Audio(soundfile);
 
 export default function ReminderManagement() {
-    
+
     const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
     const [snooze, setSnooze] = React.useState('');
     const [soundvoice, setSoundvoice] = React.useState('');
@@ -51,7 +51,7 @@ export default function ReminderManagement() {
             setIfSnooze(true);
         }
     }
-   
+
     async function saveReminderManageMent() {
         const currentUser = await saveReminderManageMentFetch("627aa35eb7ccf573d3151620", state, ifSnooze, snooze, soundvoice, reminder);
         console.log(currentUser);
@@ -71,26 +71,24 @@ export default function ReminderManagement() {
                 {state.checkedB && (
                     <div className='snooze'>
                         הפעל נדנוד אוטומטי
-                        <Checkbox {...label} icon={<NotificationsActiveOutlinedIcon />} checkedIcon={<NotificationsActiveIcon />}
-                            //checked={checked}
-                            onChange={handleChangeIfSnooze} />
-             {ifSnooze && (
-                         <div>
-                        <div id="Snooze">הפעל נודניק כל </div>
-                        <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
-                            <InputLabel id="demo-select-small"> דקות</InputLabel>
-                            <Select labelId="demo-select-small" id="demo-select-small" value={snooze} label="Age" onChange={handleChangeSnooze}>
-                                <MenuItem value="">
-                                    <em>בחר דקות</em>
-                                </MenuItem>
-                                <MenuItem value={5}>5</MenuItem>
-                                <MenuItem value={10}>10</MenuItem>
-                                <MenuItem value={15}>15</MenuItem>
-                                <MenuItem value={20}>20</MenuItem>
-                                <MenuItem value={30}>30</MenuItem>
-                            </Select>
-                        </FormControl>
-                        </div>)}
+                        <Checkbox {...label} icon={<NotificationsActiveOutlinedIcon />} checkedIcon={<NotificationsActiveIcon />} onChange={handleChangeIfSnooze} />
+                        {ifSnooze && (
+                            <div>
+                                <div id="Snooze">הפעל נודניק כל </div>
+                                <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
+                                    <InputLabel id="demo-select-small"> דקות</InputLabel>
+                                    <Select labelId="demo-select-small" id="demo-select-small" value={snooze} label="Age" onChange={handleChangeSnooze}>
+                                        <MenuItem value="">
+                                            <em>בחר דקות</em>
+                                        </MenuItem>
+                                        <MenuItem value={5}>5</MenuItem>
+                                        <MenuItem value={10}>10</MenuItem>
+                                        <MenuItem value={15}>15</MenuItem>
+                                        <MenuItem value={20}>20</MenuItem>
+                                        <MenuItem value={30}>30</MenuItem>
+                                    </Select>
+                                </FormControl>
+                            </div>)}
                         <div>:בחר צליל לתזכורות שלך</div>
                         <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
                             <InputLabel id="demo-select-small"> צליל</InputLabel>

@@ -1,9 +1,7 @@
 import React, { useState } from 'react'
 import TextField from '@mui/material/TextField';
-import Stack from '@mui/material/Stack';
 
-
-const Hours = ({ amount }) => {
+ export default function Hours({amount}) {
 
     return (
         <>
@@ -28,4 +26,3 @@ const Hours = ({ amount }) => {
         </>
     )
 }
-export default Hours;
