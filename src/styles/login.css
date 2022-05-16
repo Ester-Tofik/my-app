@@ -82,7 +82,7 @@ html {
   
   /* FORM TYPOGRAPHY*/
   
-  input[type=button], input[type=submit], input[type=reset], input[type=date]  {
+  input[type=button], input[type=submit], input[type=reset], input[type=date] {
     background-color: #652974;
     border: none;
     color: rgb(233, 232, 232);
@@ -103,8 +103,9 @@ html {
     -o-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
   }
+
   
-  input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover  {
+  input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover{
     background-color: #4d2457;
   }
 

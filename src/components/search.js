@@ -2,6 +2,7 @@ import * as React from 'react';
 import TextField from '@mui/material/TextField';
 import Stack from '@mui/material/Stack';
 import Autocomplete from '@mui/material/Autocomplete';
+import '../styles/medicationDetails.css';
 
 export default function Search() {
   return (
@@ -12,7 +13,7 @@ export default function Search() {
         disableClearable
         options={top100Films.map((option) => option.title)}
         renderInput={(params) => (
-          <TextField
+          <TextField className='center'
             {...params}
             label="חפש תרופה"
             InputProps={{

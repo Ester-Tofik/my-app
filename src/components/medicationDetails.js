@@ -5,11 +5,11 @@ import Checkbox from '@mui/material/Checkbox';
 import TextField from '@mui/material/TextField';
 import { Button } from '@material-ui/core';
 import Hours from './hours';
-import '../styles/medicationDetails.css'
+import '../styles/medicationDetails.css';
 
 export default function MedicationDetails() {
     const [age, setAge] = React.useState('');
-    const [amount, setAmount] = React.useState(' ');
+    const [amounts, setAmounts] = React.useState(' ');
     const [show, setShow] = React.useState(false);
 
     const handleChange = (event) => {
@@ -22,30 +22,31 @@ export default function MedicationDetails() {
         <div className="wrapper fadeInDown">
             <div id="formContent">
                 <div className="fadeIn first">
+                    <br />
                     :הוספת תרופה
-                    <br /><br /><br />
+                    <br /><br />
                     {/* <div id="s"> */}
-                        <Search >
-                            <p>:בחר יום</p>
-                            <Checkbox  {...label} defaultChecked />א
-                            <Checkbox  {...label} defaultChecked />ב
-                            <Checkbox  {...label} defaultChecked />ג
-                            <Checkbox  {...label} defaultChecked />ד
-                            <Checkbox  {...label} defaultChecked />ה
-                            <Checkbox  {...label} defaultChecked />ו
-                        </Search >
-                        <br/>
-                        {/* </div> */}
-                        <TextField id="outlined-number" label="Number" type="number" onChange={e => setAmount(Number(e.target.value))}
-                            InputLabelProps={{ inputProps: { min: '0', max: '10', step: '1' } }} />
-                        : מס' פעמים ביום<br />
-                        <Button variant='contained' startIcon={<AddIcon />} onClick={() => setShow(true)}>
-                            Add
-                        </Button>
-                        {show && (<Hours amount={amount} />)}
-                    </div>
+                    <Search className="center" />
+
+                    <p>:בחר יום</p>
+                    <Checkbox  {...label} defaultChecked />א
+                    <Checkbox  {...label} defaultChecked />ב
+                    <Checkbox  {...label} defaultChecked />ג
+                    <Checkbox  {...label} defaultChecked />ד
+                    <Checkbox  {...label} defaultChecked />ה
+                    <Checkbox  {...label} defaultChecked />ו
+                    <br /><br /><br />
+                    {/* </div> */}
+                    <TextField id="outlined-number" label="Number" type="number" onChange={e => setAmounts(Number(e.target.value), setShow(true))}
+                        InputProps={{ inputProps: { min: '0', max: '10', step: '1' } }} />
+                    : מס' פעמים ביום<br />
+                    <br /><br />
+                    {show && (<Hours amount={amounts} />)}
+                    <br /><br />
+                    <Button id='buttonMui' variant='contained'  >Save</Button>
                 </div>
             </div>
+        </div>
     );
 }
 
