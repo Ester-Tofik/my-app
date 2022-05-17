@@ -11,7 +11,7 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import AccountMenu from "./menu";
-// import a from '../audio/1.mp3';
+import a from  '../assets/a.mp3';
 import saveReminderManageMentFetch from '../api/reminderService';
 import { useHistory } from 'react-router-dom';
 
@@ -58,10 +58,18 @@ export default function ReminderManagement() {
         history.push('/home');
         //  saveInRedax(user.result);
     }
+    const audio1 = new Audio(
+        a
+      );
 
     return (
         <div className="wrapper fadeInDown">
             {/* </AccountMenu> */}
+            <audio controls={true}>
+                                        <source src={a} type="audio/mp3" />
+                                    </audio>
+                                    <button onClick={()=>{
+                                         audio1.play()}}>Play</button>
             <div id="formContent">
                 <FormControlLabel
                     control={
@@ -97,13 +105,13 @@ export default function ReminderManagement() {
                                     <em>בחר צליל</em>
                                 </MenuItem>
                                 <MenuItem value={10}>
-                                    <audio controls="controls">
-                                        <source src="../../public/a.mp3" type="audio/mp3" />
+                                    <audio controls={true}>
+                                        <source src={a} type="audio/mp3" />
                                     </audio>
                                 </MenuItem>
                                 <MenuItem value={20}>
                                     <audio controls>
-                                        <source src="../audio/2.mp3" type="audio/mpeg"></source>
+                                        <source src={"../audio/2.mp3"} type="audio/mpeg"></source>
                                     </audio>
                                 </MenuItem>
                                 <MenuItem value={30}>
