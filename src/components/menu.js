@@ -13,6 +13,7 @@ import ModeEditIcon from '@mui/icons-material/ModeEdit';
 import PermIdentityTwoToneIcon from '@mui/icons-material/PermIdentityTwoTone';
 import { useHistory } from "react-router-dom";
 import HomeIcon from '@mui/icons-material/Home';
+import store from '../store';
 
 export default function AccountMenu() {
     const [anchorEl, setAnchorEl] = React.useState(null);
@@ -53,7 +54,7 @@ export default function AccountMenu() {
                         aria-haspopup="true"
                         aria-expanded={open ? 'true' : undefined}
                     >
-                        <Avatar sx={{ width: 32, height: 32 }}>P</Avatar>
+                        <Avatar sx={{ width: 32, height: 32 }}>p</Avatar>
                     </IconButton>
                 </Tooltip>
             </Box>
