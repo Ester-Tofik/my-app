@@ -19,12 +19,12 @@ import AskADoctor from './components/askADoctor';
 import ReminderManagement from './components/reminderManagement';
 import MedicationDetails from './components/medicationDetails';
 
-const store = createStore(userReducer, applyMiddleware());
+// const store = createStore(userReducer, applyMiddleware());
 
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store={store}>
-    </Provider>
+    {/* <Provider store={store}>
+    </Provider> */}
     <BrowserRouter>
       <Route path='/' component={LogIn} exact />
       <Route path='/signUp' component={SignUp} />

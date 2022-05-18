@@ -4,10 +4,10 @@ import "primeicons/primeicons.css";
 import "primereact/resources/themes/bootstrap4-light-blue/theme.css";
 import "../styles/login.css";
 import logo from '../img/aa.jpg';
-import { connect } from 'react-redux';
-import { saveInRedax } from '../action/action';
 import { logInByEmailAndPassword } from '../api/userService';
 import { useHistory } from "react-router-dom";
+import store from "../store";
+import signInAction from '../action/action';
 
 export default function LogIn(props) {
 
@@ -17,8 +17,10 @@ export default function LogIn(props) {
     async function getUserByEmailAndPassword() {
         const currentUser = await logInByEmailAndPassword(id, password);
         console.log(currentUser);
+        debugger
+        store.dispatch(signInAction(currentUser));
+        console.log(store.getState());
         history.push('/home');
-        //  saveInRedax(user.result);
     }
     
     useEffect(() => {
@@ -35,7 +37,6 @@ export default function LogIn(props) {
         };
     }
 
-    connect(mapStateToProps, { saveInRedax })(LogIn);
 
     return (
         <div className="wrapper fadeInDown">

@@ -1,13 +1,41 @@
+const LOG_IN = 'LOG_IN';
 
+export default function signInAction(response){
+    let user = {
+        firstName: response.firstName,
+        lastName: response.lastName,
+        id: response.id,
+        email: response.email,
+        password: response.password,
+        phoneNumber: response.phoneNumber,
+        birthDate: response.birthDate,
+        medicines: response.medicines,
+        reminderManagement: response.reminderManagement,
+        _id: response._id
+    }
 
-export const saveInRedax = (user, props) => {
-    props.saveid(user.id)
-    props.saveFirstName(user.firstName)
-    props.saveLastName(user.lastName)
-    props.saveEmail(user.email)
-    props.savePassword(user.password)
-    props.savePhoneNumber(user.phoneNumber)
-    props.saveBirthDate(user.birthDate)
-    props.saveMedicines(user.medicines)
-    props.save_id(user._id)
+    return {
+        type: LOG_IN,
+        user
+    }
 }
+
+// export default function signUpAction(response){
+//     let user = {
+//         firstName: response.firstName,
+//         lastName: response.lastName,
+//         id: response.id,
+//         email: response.email,
+//         password: response.password,
+//         phoneNumber: response.phoneNumber,
+//         birthDate: response.birthDate,
+//         medicines: response.medicines,
+//         reminderManagement: response.reminderManagement,
+//         _id: response._id
+//     }
+
+//     return {
+//         type: LOG_IN,
+//         user
+//     }
+// }
