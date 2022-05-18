@@ -9,6 +9,8 @@ import { updateUserDetails } from "../api/userService";
 import AccountMenu from "./menu";
 import store from "../store";
 import signInAction from '../action/action';
+import { useHistory } from "react-router-dom";
+
 
 export default function EditUserDetails() {
 	const [firstName, setFirstName] = useState(store.getState().user.firstName);
@@ -23,12 +25,13 @@ export default function EditUserDetails() {
 		console.log(firstName, lastName, id, email, password, phoneNumber, birthDate);
 
 	});
+    const history = useHistory();
 
 	async function update() {
-		const updatedUser = await updateUserDetails(id, password, firstName, lastName, phoneNumber, birthDate, email);
-		console.log(updatedUser);
+		const updatedUser = await updateUserDetails(id, password, firstName, lastName, phoneNumber, store.getState().user.birthDate, email,store.getState().user._id);
 		store.dispatch(signInAction(updatedUser));
 		console.log(store.getState());
+		history.push('/home');
 	}
 	return (
 		<div className="wrapper fadeInDown">
