@@ -8,9 +8,11 @@ import { useEffect, useState } from "react";
 import { updateUserDetails } from "../api/userService";
 // import { Calendar } from 'primereact/calendar';
 import AccountMenu from "./menu";
+import store from "../store";
+import signInAction from '../action/action';
 
 export default function EditUserDetails() {
-	const [firstName, setFirstName] = useState("");
+	const [firstName, setFirstName] = useState(" ");
 	const [lastName, setLastName] = useState("");
 	const [id, setId] = useState("");
 	const [email, setEmail] = useState("");
@@ -19,12 +21,21 @@ export default function EditUserDetails() {
 	const [birthDate, setBirthDate] = useState(null)
 
 	useEffect(() => {
-		console.log(firstName, lastName, id, email, password, phoneNumber, birthDate)
+		console.log(firstName, lastName, id, email, password, phoneNumber, birthDate);
+		debugger
+		const user = store.getState().user;
+		setFirstName(user.firstName);
+		console.log(firstName);
+
+
 	}, [firstName, lastName, id, email, password, phoneNumber, birthDate]);
 
 	async function update() {
+		
 		const updatedUser = await updateUserDetails(id, password, firstName, lastName, phoneNumber, birthDate, email);
 		console.log(updatedUser);
+		store.dispatch(signInAction(updatedUser));
+		console.log(store.getState());
 	}
 	return (
 		<div className="wrapper fadeInDown">
@@ -33,7 +44,7 @@ export default function EditUserDetails() {
 					<AccountMenu></AccountMenu>
 					<img src={logo} id="icon" alt="User Icon" />
 				</div>
-				<input type="text" id="login" className="fadeIn second" name="login" placeholder="first name" onChange={e => setFirstName(e.target.value)} /><br />
+				<input type="text" id="login" className="fadeIn second" name="login" placeholder="first name" onChange={e => setFirstName(e.target.value)}/><br />
 				<input type="text" id="login" className="fadeIn second" name="login" placeholder="last name" onChange={e => setLastName(e.target.value)} /><br />
 				<input type="text" id="login" className="fadeIn second" name="login" placeholder="Identity" onChange={e => setId(e.target.value)} /><br />
 				<input type="text" id="login" className="fadeIn second" name="login" placeholder="email" onChange={e => setEmail(e.target.value)} /><br />

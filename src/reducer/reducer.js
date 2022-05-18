@@ -12,8 +12,24 @@ const initialState = {
         medicines: "",
         reminderManagement: "",
         _id: ""
-    }
+    },
+    medicines: [{
+        apiId: "",
+        name: "",
+        ammount: 0,
+        numberForDay: 0,
+        numberOf: 0,
+        startTakingDate: new Date(),
+        SendAReminder: false
+    }],
 
+    reminderManagement: {
+        userWantReminders: true,
+        automaticOscillation: false,
+        snooze: 0,
+        sound: 0,
+        PreTaskReminder: 0
+    }
 }
 console.log(initialState, "initialState1");
 
@@ -21,6 +37,8 @@ const userReducer = (state = initialState, action) => {
     console.log(action, "action");
     switch (action.type) {
         case "LOG_IN":
+            return { ...state, user: action.user };
+        case "SIGN_UP":
             return { ...state, user: action.user };
         // case "saveid":
         //     return { ...state, id: action.payload };
@@ -48,5 +66,4 @@ const userReducer = (state = initialState, action) => {
 }
 console.log(initialState, "initialState2");
 
-// export default combineReducers({ user: userReducer });
 export default userReducer;

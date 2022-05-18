@@ -11,7 +11,7 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import AccountMenu from "./menu";
-import a from  '../assets/a.mp3';
+import a from '../assets/a.mp3';
 import saveReminderManageMentFetch from '../api/reminderService';
 import { useHistory } from 'react-router-dom';
 
@@ -60,16 +60,17 @@ export default function ReminderManagement() {
     }
     const audio1 = new Audio(
         a
-      );
+    );
 
     return (
         <div className="wrapper fadeInDown">
             {/* </AccountMenu> */}
-            <audio controls={true}>
-                                        <source src={a} type="audio/mp3" />
-                                    </audio>
-                                    <button onClick={()=>{
-                                         audio1.play()}}>Play</button>
+            {/* <audio controls={true}>
+                <source src={a} type="audio/mp3" />
+            </audio>
+            <button onClick={() => {
+                audio1.play()
+            }}>Play</button> */}
             <div id="formContent">
                 <FormControlLabel
                     control={

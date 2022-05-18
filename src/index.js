@@ -23,8 +23,6 @@ import MedicationDetails from './components/medicationDetails';
 
 ReactDOM.render(
   <React.StrictMode>
-    {/* <Provider store={store}>
-    </Provider> */}
     <BrowserRouter>
       <Route path='/' component={LogIn} exact />
       <Route path='/signUp' component={SignUp} />

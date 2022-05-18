@@ -1,4 +1,5 @@
 const LOG_IN = 'LOG_IN';
+const SIGN_UP = 'SIGN_UP';
 
 export default function signInAction(response){
     let user = {
@@ -9,8 +10,6 @@ export default function signInAction(response){
         password: response.password,
         phoneNumber: response.phoneNumber,
         birthDate: response.birthDate,
-        medicines: response.medicines,
-        reminderManagement: response.reminderManagement,
         _id: response._id
     }
 
@@ -29,13 +28,11 @@ export default function signInAction(response){
 //         password: response.password,
 //         phoneNumber: response.phoneNumber,
 //         birthDate: response.birthDate,
-//         medicines: response.medicines,
-//         reminderManagement: response.reminderManagement,
 //         _id: response._id
 //     }
 
 //     return {
-//         type: LOG_IN,
+//         type: SIGN_UP,
 //         user
 //     }
 // }
