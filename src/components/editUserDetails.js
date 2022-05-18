@@ -5,21 +5,19 @@ import "primereact/resources/themes/bootstrap4-light-blue/theme.css";
 import "../styles/login.css";
 import logo from '../img/aa.jpg';
 import { useEffect, useState } from "react";
-import React from "react";
 import { updateUserDetails } from "../api/userService";
-// import { Calendar } from 'primereact/calendar';
 import AccountMenu from "./menu";
 import store from "../store";
 import signInAction from '../action/action';
 
 export default function EditUserDetails() {
-	const [firstName, setFirstName] = React.useState(store.getState().user.firstName);
-	const [lastName, setLastName] = React.useState(store.getState().user.lastName);
-	const [id, setId] = React.useState(store.getState().user.id);
-	const [email, setEmail] = React.useState(store.getState().user.email);
-	const [password, setPassword] = React.useState(store.getState().user.password);
-	const [phoneNumber, setPhoneNumber] = React.useState(store.getState().user.phoneNumber);
-	const [birthDate, setBirthDate] = React.useState(store.getState().user.birthDate.slice(0,10));
+	const [firstName, setFirstName] = useState(store.getState().user.firstName);
+	const [lastName, setLastName] = useState(store.getState().user.lastName);
+	const [id, setId] = useState(store.getState().user.id);
+	const [email, setEmail] = useState(store.getState().user.email);
+	const [password, setPassword] = useState(store.getState().user.password);
+	const [phoneNumber, setPhoneNumber] = useState(store.getState().user.phoneNumber);
+	const [birthDate, setBirthDate] = useState(store.getState().user.birthDate.slice(0,10));
 
 	useEffect(() => {
 		console.log(firstName, lastName, id, email, password, phoneNumber, birthDate);
