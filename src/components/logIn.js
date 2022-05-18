@@ -7,7 +7,7 @@ import logo from '../img/aa.jpg';
 import { logInByEmailAndPassword } from '../api/userService';
 import { useHistory } from "react-router-dom";
 import store from "../store";
-import signInAction from '../action/action';
+import loginInAction from '../action/action';
 
 export default function LogIn(props) {
 
@@ -15,9 +15,10 @@ export default function LogIn(props) {
     const [password, setPassword] = useState(" ");
 
     async function getUserByEmailAndPassword() {
+        debugger
         const currentUser = await logInByEmailAndPassword(id, password);
         console.log(currentUser);
-        store.dispatch(signInAction(currentUser));
+        store.dispatch(loginInAction(currentUser));
         console.log(store.getState());
         history.push('/home');
     }
