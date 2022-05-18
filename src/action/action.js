@@ -1,7 +1,9 @@
 const LOG_IN = 'LOG_IN';
-const SIGN_UP = 'SIGN_UP';
+const REMINDER_MANAGEMENT ='REMINDER_MANAGEMENT';
 
-export default function signInAction(response){
+
+
+export function loginInAction(response){
     let user = {
         firstName: response.firstName,
         lastName: response.lastName,
@@ -19,20 +21,13 @@ export default function signInAction(response){
     }
 }
 
-// export default function signUpAction(response){
-//     let user = {
-//         firstName: response.firstName,
-//         lastName: response.lastName,
-//         id: response.id,
-//         email: response.email,
-//         password: response.password,
-//         phoneNumber: response.phoneNumber,
-//         birthDate: response.birthDate,
-//         _id: response._id
-//     }
+export default function reminderAction(response){
+    let reminderManagement = {
+        reminderManagement:response.reminderManagement
+    }
 
-//     return {
-//         type: SIGN_UP,
-//         user
-//     }
-// }
+    return {
+        type: REMINDER_MANAGEMENT,
+        reminderManagement
+    }
+}

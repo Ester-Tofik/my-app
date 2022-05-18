@@ -40,6 +40,8 @@ const userReducer = (state = initialState, action) => {
             return { ...state, user: action.user };
         case "SIGN_UP":
             return { ...state, user: action.user };
+            case "REMINDER_MANAGEMENT":
+                return { ...state, user: action.reminderManagement };
         // case "saveid":
         //     return { ...state, id: action.payload };
         // case "save_firstName":

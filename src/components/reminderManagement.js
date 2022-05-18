@@ -14,8 +14,9 @@ import AccountMenu from "./menu";
 import a from '../assets/a.mp3';
 import saveReminderManageMentFetch from '../api/reminderService';
 import { useHistory } from 'react-router-dom';
-
+import store from '../store';
 // const alarm = new Audio(soundfile);
+import reminderAction from '../action/action';
 
 export default function ReminderManagement() {
 
@@ -53,12 +54,14 @@ export default function ReminderManagement() {
     }
 
     async function saveReminderManageMent() {
-        const currentUser = await saveReminderManageMentFetch("627aa35eb7ccf573d3151620", state, ifSnooze, snooze, soundvoice, reminder);
-        console.log(currentUser);
-        history.push('/home');
-        //  saveInRedax(user.result);
+        debugger
+        const reminderToSave = await saveReminderManageMentFetch("6284b53487ab08e87e160d57", state, ifSnooze, snooze, soundvoice, reminder);
+        debugger
+        store.dispatch(reminderAction(reminderToSave));
+        console.log(store.getState());
+        //history.push('/home');
     }
-  
+
 
     return (
         <div className="wrapper fadeInDown">
