@@ -38,10 +38,8 @@ const userReducer = (state = initialState, action) => {
     switch (action.type) {
         case "LOG_IN":
             return { ...state, user: action.user };
-        case "SIGN_UP":
-            return { ...state, user: action.user };
-            case "REMINDER_MANAGEMENT":
-                return { ...state, user: action.reminderManagement };
+        case "REMINDER_MANAGEMENT":
+            return { ...state, reminderManagement: action.reminderManagement };
         // case "saveid":
         //     return { ...state, id: action.payload };
         // case "save_firstName":

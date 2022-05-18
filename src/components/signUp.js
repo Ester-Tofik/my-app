@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 import { signUpApi } from "../api/userService";
 import { useHistory } from "react-router-dom";
 import store from "../store";
-import signInAction from '../action/action';
+import loginInAction from '../action/action';
 
 export default function SignUp() {
 	const [firstName, setFirstName] = useState("");
@@ -27,7 +27,7 @@ export default function SignUp() {
 	  async function signUp (){
 		  const newUser = await signUpApi(id, password, firstName, lastName, phoneNumber, birthDate, email);
 		  console.log(newUser);
-		  store.dispatch(signInAction(newUser));
+		  store.dispatch(loginInAction(newUser));
 		  console.log(store.getState());
 		  history.push('/home');
 	  }

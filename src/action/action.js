@@ -1,9 +1,6 @@
 const LOG_IN = 'LOG_IN';
-const REMINDER_MANAGEMENT ='REMINDER_MANAGEMENT';
 
-
-
-export function loginInAction(response){
+export default function  loginInAction (response) {
     let user = {
         firstName: response.firstName,
         lastName: response.lastName,
@@ -21,13 +18,4 @@ export function loginInAction(response){
     }
 }
 
-export default function reminderAction(response){
-    let reminderManagement = {
-        reminderManagement:response.reminderManagement
-    }
 
-    return {
-        type: REMINDER_MANAGEMENT,
-        reminderManagement
-    }
-}

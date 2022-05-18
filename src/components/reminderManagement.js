@@ -16,7 +16,7 @@ import saveReminderManageMentFetch from '../api/reminderService';
 import { useHistory } from 'react-router-dom';
 import store from '../store';
 // const alarm = new Audio(soundfile);
-import reminderAction from '../action/action';
+import reminderAction from '../action/reminderAction';
 
 export default function ReminderManagement() {
 
@@ -54,9 +54,7 @@ export default function ReminderManagement() {
     }
 
     async function saveReminderManageMent() {
-        debugger
-        const reminderToSave = await saveReminderManageMentFetch("6284b53487ab08e87e160d57", state, ifSnooze, snooze, soundvoice, reminder);
-        debugger
+        const reminderToSave = await saveReminderManageMentFetch(store.getState().user._id, state, ifSnooze, snooze, soundvoice, reminder);
         store.dispatch(reminderAction(reminderToSave));
         console.log(store.getState());
         //history.push('/home');

@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 import { updateUserDetails } from "../api/userService";
 import AccountMenu from "./menu";
 import store from "../store";
-import signInAction from '../action/action';
+import loginInAction from '../action/action';
 import { useHistory } from "react-router-dom";
 
 
@@ -29,7 +29,7 @@ export default function EditUserDetails() {
 
 	async function update() {
 		const updatedUser = await updateUserDetails(id, password, firstName, lastName, phoneNumber, store.getState().user.birthDate, email,store.getState().user._id);
-		store.dispatch(signInAction(updatedUser));
+		store.dispatch(loginInAction(updatedUser));
 		console.log(store.getState());
 		history.push('/home');
 	}
