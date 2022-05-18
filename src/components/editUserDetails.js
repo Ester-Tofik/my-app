@@ -5,6 +5,7 @@ import "primereact/resources/themes/bootstrap4-light-blue/theme.css";
 import "../styles/login.css";
 import logo from '../img/aa.jpg';
 import { useEffect, useState } from "react";
+import React from "react";
 import { updateUserDetails } from "../api/userService";
 // import { Calendar } from 'primereact/calendar';
 import AccountMenu from "./menu";
@@ -12,26 +13,20 @@ import store from "../store";
 import signInAction from '../action/action';
 
 export default function EditUserDetails() {
-	const [firstName, setFirstName] = useState(" ");
-	const [lastName, setLastName] = useState("");
-	const [id, setId] = useState("");
-	const [email, setEmail] = useState("");
-	const [password, setPassword] = useState("");
-	const [phoneNumber, setPhoneNumber] = useState("");
-	const [birthDate, setBirthDate] = useState(null)
+	const [firstName, setFirstName] = React.useState(store.getState().user.firstName);
+	const [lastName, setLastName] = React.useState(store.getState().user.lastName);
+	const [id, setId] = React.useState(store.getState().user.id);
+	const [email, setEmail] = React.useState(store.getState().user.email);
+	const [password, setPassword] = React.useState(store.getState().user.password);
+	const [phoneNumber, setPhoneNumber] = React.useState(store.getState().user.phoneNumber);
+	const [birthDate, setBirthDate] = React.useState(store.getState().user.birthDate.slice(0,10));
 
 	useEffect(() => {
 		console.log(firstName, lastName, id, email, password, phoneNumber, birthDate);
-		debugger
-		const user = store.getState().user;
-		setFirstName(user.firstName);
-		console.log(firstName);
 
-
-	}, [firstName, lastName, id, email, password, phoneNumber, birthDate]);
+	});
 
 	async function update() {
-		
 		const updatedUser = await updateUserDetails(id, password, firstName, lastName, phoneNumber, birthDate, email);
 		console.log(updatedUser);
 		store.dispatch(signInAction(updatedUser));
@@ -44,14 +39,13 @@ export default function EditUserDetails() {
 					<AccountMenu></AccountMenu>
 					<img src={logo} id="icon" alt="User Icon" />
 				</div>
-				<input type="text" id="login" className="fadeIn second" name="login" placeholder="first name" onChange={e => setFirstName(e.target.value)}/><br />
-				<input type="text" id="login" className="fadeIn second" name="login" placeholder="last name" onChange={e => setLastName(e.target.value)} /><br />
-				<input type="text" id="login" className="fadeIn second" name="login" placeholder="Identity" onChange={e => setId(e.target.value)} /><br />
-				<input type="text" id="login" className="fadeIn second" name="login" placeholder="email" onChange={e => setEmail(e.target.value)} /><br />
-				<input type="text" id="login" className="fadeIn second" name="login" placeholder="phone" onChange={e => setPhoneNumber(e.target.value)} /><br />
-				{/* <Calendar id="basic" value={birthDate} onChange={(e) => setBirthDate(e.value)} /> */}
-				<input type="date" id="login" className="fadeIn second" name="login" placeholder="birthdate" onChange={e => setBirthDate(e.target.value)} /><br />
-				<input type="password" id="password" className="fadeIn third" name="login" placeholder="Password" onChange={e => setPassword(e.target.value)} /><br />
+				<input type="text" id="login" className="fadeIn second" name="login" placeholder="first name" onChange={e => setFirstName(e.target.value)} value={firstName} /><br />
+				<input type="text" id="login" className="fadeIn second" name="login" placeholder="last name" onChange={e => setLastName(e.target.value)} value={lastName} /><br />
+				<input type="text" id="login" className="fadeIn second" name="login" placeholder="Identity" onChange={e => setId(e.target.value)} value={id}/><br />
+				<input type="text" id="login" className="fadeIn second" name="login" placeholder="email" onChange={e => setEmail(e.target.value)} value={email}/><br />
+				<input type="text" id="login" className="fadeIn second" name="login" placeholder="phone" onChange={e => setPhoneNumber(e.target.value)} value={phoneNumber}/><br />
+				<input type="date" id="login" className="fadeIn second" name="login" placeholder="birthdate" onChange={e => setBirthDate(e.target.value)} value={birthDate}/><br />
+				<input type="password" id="password" className="fadeIn third" name="login" placeholder="Password" onChange={e => setPassword(e.target.value)} value={password}/><br />
 				<br />
 				<input type="submit" className="fadeIn fourth" value="save" onClick={update} />
 			</div>
