@@ -58,9 +58,7 @@ export default function ReminderManagement() {
         history.push('/home');
         //  saveInRedax(user.result);
     }
-    const audio1 = new Audio(
-        a
-    );
+  
 
     return (
         <div className="wrapper fadeInDown">
