@@ -17,7 +17,6 @@ export default function LogIn(props) {
     async function getUserByEmailAndPassword() {
         const currentUser = await logInByEmailAndPassword(id, password);
         console.log(currentUser);
-        debugger
         store.dispatch(signInAction(currentUser));
         console.log(store.getState());
         history.push('/home');

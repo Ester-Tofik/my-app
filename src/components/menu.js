@@ -30,9 +30,9 @@ export default function AccountMenu() {
     };
 
     useEffect(() => {
-          const firstProfile = store.getState();
-          setFirst(firstProfile.user.firstName[0]);
-          setfirstName(firstProfile.user.firstName + " " + firstProfile.user.lastName);
+          const firstProfile = store.getState().user.firstName[0];
+          setFirst(firstProfile);
+          setfirstName(store.getState().user.firstName);
     }, [])
 
     const history = useHistory();
@@ -52,8 +52,6 @@ export default function AccountMenu() {
     return (
         <React.Fragment>
             <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
-                {/* <Typography sx={{ minWidth: 100 }}>Contact</Typography>
-                <Typography sx={{ minWidth: 100 }}>Profile</Typography> */}
                 <Tooltip title="Account settings">
                     <IconButton
                         onClick={handleClick}
