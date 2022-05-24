@@ -14,7 +14,7 @@ import PermIdentityTwoToneIcon from '@mui/icons-material/PermIdentityTwoTone';
 import { useHistory } from "react-router-dom";
 import HomeIcon from '@mui/icons-material/Home';
 import store from '../store';
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 export default function AccountMenu() {
     const [anchorEl, setAnchorEl] = React.useState(null);
