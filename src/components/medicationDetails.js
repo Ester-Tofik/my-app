@@ -8,6 +8,9 @@ import '../styles/medicationDetails.css';
 // import Checkbox from '@mui/material/Checkbox';
 import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
 import NotificationsActiveOutlinedIcon from '@mui/icons-material/NotificationsActiveOutlined';
+import saveMedicinesFach from '../api/medicineService'
+import medicinesAction from '../action/medicationAction';
+import store from '../store';
 
 
 export default function MedicationDetails() {
@@ -15,8 +18,12 @@ export default function MedicationDetails() {
     const [show, setShow] = React.useState(false);
     const [reminderPerPack, setReminderPerPack] = React.useState(false);
     const [reminder, setReminder] = React.useState(true);
+    const [searchMedicine, setSearchMedicine] = React.useState(' ');
+    const [pillsNumber, setPillsNumber] = React.useState(' ');
 
-    const handleReminder = ()=>{
+     const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
+
+    const handleReminder = () => {
         if (reminder) {
             setReminder(false);
         }
@@ -25,7 +32,11 @@ export default function MedicationDetails() {
         }
         console.log(reminder)
     }
-  //הטרו והפלס הפוכים
+    React.useEffect(()=>{
+        debugger
+        console.log(searchMedicine);
+    }, [searchMedicine])
+    //הטרו והפלס הפוכים
     const handleReminderPerPack = (event) => {
         if (reminderPerPack) {
             setReminderPerPack(false);
@@ -35,7 +46,16 @@ export default function MedicationDetails() {
         }
         console.log(reminderPerPack)
     }
-    const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
+    //////////////////////////////////////////////////////////////// apiId, name, daysInWeek, 
+    // numberForDay
+    //////////////////////////////////////////////////////////////// ,times, 
+    // ammountOfPills,SendAReminderForPacket, pillsInPacket,SendAReminder 
+    async function saveMedicines() {
+        const medicinesToSave = await saveMedicinesFach(store.getState().user._id, searchMedicine,amounts,reminderPerPack,pillsNumber,reminder);
+        store.dispatch(medicinesAction(medicinesToSave));
+        console.log(store.getState());
+    }
+
 
     return (
         <div className="wrapper fadeInDown">
@@ -44,7 +64,7 @@ export default function MedicationDetails() {
                     <br />
                     :הוספת תרופה
                     <br /><br />
-                    <Search className="center" />
+                    <Search className="center" onClick={e => { setSearchMedicine(e.target.value)}} />
                     <p>:בחר יום</p>
                     <Checkbox  {...label} defaultChecked />א
                     <Checkbox  {...label} defaultChecked />ב
@@ -65,15 +85,15 @@ export default function MedicationDetails() {
                         שלח לי תזכורת לחידוש חפיסה
                         <Checkbox {...label} icon={<NotificationsActiveOutlinedIcon />} checkedIcon={<NotificationsActiveIcon />} onChange={handleReminderPerPack} />
                         {reminderPerPack && (
-                            <div>  
-                                <TextField id="outlined-number" label='כדורים' type="number" InputProps={{ inputProps: { min: '0', max: '100', step: '1' } }} />
-                               :כרגע יש לי בחפיסה</div> 
+                            <div>
+                                <TextField id="outlined-number" label='כדורים' type="number" InputProps={{ inputProps: { min: '0', max: '100', step: '1' } }} onChange={e=>setPillsNumber(Number(e.target.value))}/>
+                                :כרגע יש לי בחפיסה</div>
                         )}<br /><br />
                     </div>
                     :שלח לי תזכורת לנטילת תרופה
-                        <Checkbox {...label} icon={<NotificationsActiveOutlinedIcon />} checkedIcon={<NotificationsActiveIcon />} onChange={handleReminder} />
+                    <Checkbox {...label} icon={<NotificationsActiveOutlinedIcon />} checkedIcon={<NotificationsActiveIcon />} onChange={handleReminder} />
                     <br /> <br />
-                    <Button id='buttonMui' variant='contained'  >Save</Button>
+                    <Button id='buttonMui' variant='contained' onClick={saveMedicines} >Save</Button>
                 </div>
             </div>
         </div>
