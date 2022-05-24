@@ -16,6 +16,9 @@ import store from '../store';
 export default function MedicationDetails() {
     const [amounts, setAmounts] = React.useState(' ');
     const [show, setShow] = React.useState(false);
+    
+    
+    // drvfghj
     const [reminderPerPack, setReminderPerPack] = React.useState(false);
     const [reminder, setReminder] = React.useState(true);
     const [searchMedicine, setSearchMedicine] = React.useState(' ');
