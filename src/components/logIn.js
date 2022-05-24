@@ -31,11 +31,11 @@ export default function LogIn(props) {
     const signUp = () => {
         history.push('/signUp');
     }
-    const mapStateToProps = ({ user }) => {
-        return {
-            ...user
-        };
-    }
+    // const mapStateToProps = ({ user }) => {
+    //     return {
+    //         ...user
+    //     };
+    // }
 
 
     return (

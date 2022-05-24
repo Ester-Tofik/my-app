@@ -22,8 +22,12 @@ export default function Medicines() {
         history.push('/medicationDetails');
     }
 
+    useEffect(async () => {
+       await getMedicines();
+    }, []);
+
     return (
-        <div className="wrapper fadeInDown" onLoad={getMedicines}>
+        <div className="wrapper fadeInDown">
             <div id="formContent">
                 <div className="fadeIn first">
                     Medicines works!
@@ -31,7 +35,7 @@ export default function Medicines() {
                         {
                             listMedicinceForUser.map(el =>
                                 <div>
-                                    <button value={el}></button>
+                                    <button>{el._id}</button>
                                 </div>)
                         }
                     </div>
