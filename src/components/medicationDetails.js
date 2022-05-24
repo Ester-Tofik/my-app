@@ -11,7 +11,7 @@ import NotificationsActiveOutlinedIcon from '@mui/icons-material/NotificationsAc
 import saveMedicinesFach from '../api/medicineService'
 import medicinesAction from '../action/medicationAction';
 import store from '../store';
-
+import AccountMenu from "./menu";
 
 export default function MedicationDetails() {
     const [amounts, setAmounts] = React.useState(' ');
@@ -64,6 +64,9 @@ export default function MedicationDetails() {
         <div className="wrapper fadeInDown">
             <div id="formContent">
                 <div className="fadeIn first">
+                <br />
+
+                    <AccountMenu/>
                     <br />
                     :הוספת תרופה
                     <br /><br />

@@ -63,7 +63,7 @@ export default function ReminderManagement() {
 
     return (
         <div className="wrapper fadeInDown">
-            {/* </AccountMenu> */}
+            <AccountMenu/>
             {/* <audio controls={true}>
                 <source src={a} type="audio/mp3" />
             </audio>
