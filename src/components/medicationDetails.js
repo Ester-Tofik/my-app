@@ -16,15 +16,14 @@ import AccountMenu from "./menu";
 export default function MedicationDetails() {
     const [amounts, setAmounts] = React.useState(' ');
     const [show, setShow] = React.useState(false);
-    
-    
+
+
     // drvfghj
     const [reminderPerPack, setReminderPerPack] = React.useState(false);
     const [reminder, setReminder] = React.useState(true);
-    const [searchMedicine, setSearchMedicine] = React.useState(' ');
     const [pillsNumber, setPillsNumber] = React.useState(' ');
 
-     const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
+    const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
     const handleReminder = () => {
         if (reminder) {
@@ -35,10 +34,7 @@ export default function MedicationDetails() {
         }
         console.log(reminder)
     }
-    React.useEffect(()=>{
-        debugger
-        console.log(searchMedicine);
-    }, [searchMedicine])
+
     //הטרו והפלס הפוכים
     const handleReminderPerPack = (event) => {
         if (reminderPerPack) {
@@ -54,23 +50,22 @@ export default function MedicationDetails() {
     //////////////////////////////////////////////////////////////// ,times, 
     // ammountOfPills,SendAReminderForPacket, pillsInPacket,SendAReminder 
     async function saveMedicines() {
-        const medicinesToSave = await saveMedicinesFach(store.getState().user._id, searchMedicine,amounts,reminderPerPack,pillsNumber,reminder);
+        const medicinesToSave = await saveMedicinesFach(store.getState().user._id, amounts, reminderPerPack, pillsNumber, reminder);
         store.dispatch(medicinesAction(medicinesToSave));
         console.log(store.getState());
     }
-
 
     return (
         <div className="wrapper fadeInDown">
             <div id="formContent">
                 <div className="fadeIn first">
-                <br />
+                    <br />
 
-                    <AccountMenu/>
+                    <AccountMenu />
                     <br />
                     :הוספת תרופה
                     <br /><br />
-                    <Search className="center" onClick={e => { setSearchMedicine(e.target.value)}} />
+                    <Search className="center" />
                     <p>:בחר יום</p>
                     <Checkbox  {...label} defaultChecked />א
                     <Checkbox  {...label} defaultChecked />ב
@@ -92,7 +87,7 @@ export default function MedicationDetails() {
                         <Checkbox {...label} icon={<NotificationsActiveOutlinedIcon />} checkedIcon={<NotificationsActiveIcon />} onChange={handleReminderPerPack} />
                         {reminderPerPack && (
                             <div>
-                                <TextField id="outlined-number" label='כדורים' type="number" InputProps={{ inputProps: { min: '0', max: '100', step: '1' } }} onChange={e=>setPillsNumber(Number(e.target.value))}/>
+                                <TextField id="outlined-number" label='כדורים' type="number" InputProps={{ inputProps: { min: '0', max: '100', step: '1' } }} onChange={e => setPillsNumber(Number(e.target.value))} />
                                 :כרגע יש לי בחפיסה</div>
                         )}<br /><br />
                     </div>
