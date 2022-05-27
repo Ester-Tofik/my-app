@@ -78,8 +78,8 @@ export default function MedicationDetails() {
 
         useEffect(() => {
             console.log(checkedMedicine);
-            console.log(checkedState);
-        }, [checkedMedicine, checkedState])
+            console.log(checkedDays);
+        }, [checkedMedicine, checkedDays])
         return (
             <div className="wrapper fadeInDown">
                 <div id="formContent">
