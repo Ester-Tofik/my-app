@@ -15,7 +15,7 @@ export default function LogIn(props) {
     const [password, setPassword] = useState(" ");
 
     async function getUserByEmailAndPassword() {
-        debugger
+        
         const currentUser = await logInByEmailAndPassword(id, password);
         console.log(currentUser);
         store.dispatch(loginInAction(currentUser));

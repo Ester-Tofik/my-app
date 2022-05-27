@@ -12,18 +12,18 @@ import saveMedicinesFach from '../api/medicineService'
 import medicinesAction from '../action/medicationAction';
 import store from '../store';
 import AccountMenu from "./menu";
+import { useEffect } from 'react';
+import { daysToWeeks } from 'date-fns/fp';
 
 export default function MedicationDetails() {
     const [amounts, setAmounts] = React.useState(' ');
     const [show, setShow] = React.useState(false);
-
-
-    // drvfghj
     const [reminderPerPack, setReminderPerPack] = React.useState(false);
     const [reminder, setReminder] = React.useState(true);
     const [pillsNumber, setPillsNumber] = React.useState(' ');
-
-    const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
+    const [checkedMedicine, setCheckedMedicine] = React.useState({});
+    const days= ['א', 'ב', 'ג', 'ד', 'ה', 'ן'];
+    const [checkedDays, setCheckedDays] = React.useState(new Array(days.length).fill(true));
 
     const handleReminder = () => {
         if (reminder) {
@@ -34,72 +34,92 @@ export default function MedicationDetails() {
         }
         console.log(reminder)
     }
+    const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
-    //הטרו והפלס הפוכים
-    const handleReminderPerPack = (event) => {
-        if (reminderPerPack) {
-            setReminderPerPack(false);
-        }
-        else {
-            setReminderPerPack(true);
-        }
-        console.log(reminderPerPack)
+    const arrayMap = days.map((element, index) => {
+        return (
+            <div>
+                <Checkbox  {...label} defaultChecked
+                    onChange={() => handleOnChange(index)} />
+                {element}
+            </div>
+        )
+    })
+    const handleOnChange = (position) => {
+        debugger
+        const updatedCheckedState = checkedDays.map((item, index) =>
+            index === position ? !item : item
+        );
+        setCheckedDays(updatedCheckedState);
     }
-    //////////////////////////////////////////////////////////////// apiId, name, daysInWeek, 
-    // numberForDay
-    //////////////////////////////////////////////////////////////// ,times, 
-    // ammountOfPills,SendAReminderForPacket, pillsInPacket,SendAReminder 
-    async function saveMedicines() {
-        const medicinesToSave = await saveMedicinesFach(store.getState().user._id, amounts, reminderPerPack, pillsNumber, reminder);
-        store.dispatch(medicinesAction(medicinesToSave));
-        console.log(store.getState());
-    }
+        //הטרו והפלס הפוכים
+        const handleReminderPerPack = (event) => {
+            if (reminderPerPack) {
+                setReminderPerPack(false);
+            }
+            else {
+                setReminderPerPack(true);
+            }
+            console.log(reminderPerPack)
+        }
+        //////////////////////////////////////////////////////////////// apiId, name, daysInWeek, 
+        // numberForDay
+        //////////////////////////////////////////////////////////////// ,times, 
+        // ammountOfPills,SendAReminderForPacket, pillsInPacket,SendAReminder 
+        async function saveMedicines() {
+            const medicinesToSave = await saveMedicinesFach(store.getState().user._id, checkedMedicine._id,checkedDays, checkedMedicine['שם תכשיר'], amounts, reminderPerPack, pillsNumber, reminder);
+            store.dispatch(medicinesAction(medicinesToSave));
+            console.log(store.getState());
+        }
 
-    return (
-        <div className="wrapper fadeInDown">
-            <div id="formContent">
-                <div className="fadeIn first">
-                    <br />
+        const handleCallback = (childData) => {
+            setCheckedMedicine(childData);
+        }
 
-                    <AccountMenu />
-                    <br />
-                    :הוספת תרופה
-                    <br /><br />
-                    <Search className="center" />
-                    <p>:בחר יום</p>
-                    <Checkbox  {...label} defaultChecked />א
-                    <Checkbox  {...label} defaultChecked />ב
-                    <Checkbox  {...label} defaultChecked />ג
-                    <Checkbox  {...label} defaultChecked />ד
-                    <Checkbox  {...label} defaultChecked />ה
-                    <Checkbox  {...label} defaultChecked />ו
-                    <br /><br /><br />
-                    <TextField id="outlined-number" label={amounts} type="number" onChange={e => setAmounts(Number(e.target.value), setShow(true))}
-                        InputProps={{ inputProps: { min: '0', max: '5', step: '1' } }} />
-                    <span>     :מס' פעמים ביום     </span> <br />
-                    <br /><br />
-                    {show && (<Hours amount={amounts} />)}
+        useEffect(() => {
+            console.log(checkedMedicine);
+            console.log(checkedState);
+        }, [checkedMedicine, checkedState])
+        return (
+            <div className="wrapper fadeInDown">
+                <div id="formContent">
+                    <div className="fadeIn first">
+                        <br />
 
-                    <TextField id="outlined-number" label='כדורים' type="number" InputProps={{ inputProps: { min: '0', max: '3', step: '1' } }} />:מס' כדורים ללקיחה
-                    <br /> <br />
-                    <div >
-                        שלח לי תזכורת לחידוש חפיסה
-                        <Checkbox {...label} icon={<NotificationsActiveOutlinedIcon />} checkedIcon={<NotificationsActiveIcon />} onChange={handleReminderPerPack} />
-                        {reminderPerPack && (
-                            <div>
-                                <TextField id="outlined-number" label='כדורים' type="number" InputProps={{ inputProps: { min: '0', max: '100', step: '1' } }} onChange={e => setPillsNumber(Number(e.target.value))} />
-                                :כרגע יש לי בחפיסה</div>
-                        )}<br /><br />
+                        <AccountMenu />
+                        <br />
+                        :הוספת תרופה
+                        <br /><br />
+                        <Search className="center" parentCallback={handleCallback} />
+                        <p>:בחר יום</p>
+                        {arrayMap}
+                        <br /><br /><br />
+                        <TextField id="outlined-number" label={amounts} type="number" onChange={e => setAmounts(Number(e.target.value), setShow(true))}
+                            InputProps={{ inputProps: { min: '0', max: '5', step: '1' } }} />
+                        <span>     :מס' פעמים ביום     </span> <br />
+                        <br /><br />
+                        {show && (<Hours amount={amounts} />)}
+
+                        <TextField id="outlined-number" label='כדורים' type="number" InputProps={{ inputProps: { min: '0', max: '3', step: '1' } }} />:מס' כדורים ללקיחה
+                        <br /> <br />
+                        <div >
+                            שלח לי תזכורת לחידוש חפיסה
+                            <Checkbox {...label} icon={<NotificationsActiveOutlinedIcon />} checkedIcon={<NotificationsActiveIcon />} onChange={handleReminderPerPack} />
+                            {reminderPerPack && (
+                                <div>
+                                    <TextField id="outlined-number" label='כדורים' type="number" InputProps={{ inputProps: { min: '0', max: '100', step: '1' } }} onChange={e => setPillsNumber(Number(e.target.value))} />
+                                    :כרגע יש לי בחפיסה</div>
+                            )}<br /><br />
+                        </div>
+                        :שלח לי תזכורת לנטילת תרופה
+                        <Checkbox {...label} icon={<NotificationsActiveOutlinedIcon />} checkedIcon={<NotificationsActiveIcon />} onChange={handleReminder} />
+                        <br /> <br />
+                        <Button id='buttonMui' variant='contained' onClick={saveMedicines} >Save</Button>
                     </div>
-                    :שלח לי תזכורת לנטילת תרופה
-                    <Checkbox {...label} icon={<NotificationsActiveOutlinedIcon />} checkedIcon={<NotificationsActiveIcon />} onChange={handleReminder} />
-                    <br /> <br />
-                    <Button id='buttonMui' variant='contained' onClick={saveMedicines} >Save</Button>
                 </div>
             </div>
-        </div>
-    );
-}
+        );
+    }
 
 
 

@@ -5,37 +5,44 @@ import Autocomplete from '@mui/material/Autocomplete';
 import '../styles/medicationDetails.css';
 import getMedicinesFromApi from '../api/medicineService';
 
-export default function Search({ }) {
-  const [medicines, setMedicines] = React.useState([]);
-  const [flug, setFlug] = React.useState(false);
+export default function Search(props) {
+  const [medicines, setMedicines] = useState([]);
+  const [flug, setFlug] = useState(false);
   // const [searchMedicine, setSearchMedicine] = React.useState(' ');
-  const [value, setValue] = React.useState('');
-  const [checkedMedicine, setCheckedMedicine] =  React.useState("");
+  const [value, setValue] = useState('');
+  const [checkedMedicine, setCheckedMedicine] = useState("");
   useEffect(async () => {
     if (!flug) {
       const data = await getMedicinesFromApi();
       setMedicines(data);
       setFlug(true);
     }
-
   }, [flug])
   useEffect(() => {
+    debugger
     console.log(`${value}`)
-    console.log(`${checkedMedicine}`)
+    console.log(checkedMedicine)
   }, [value, checkedMedicine])
 
+  const onTrigger = (event, newValue) => {
+    debugger
+    setValue(newValue);
+    medicines.forEach(element => {
+      if (element['שם תכשיר'] === newValue) {
+        setCheckedMedicine(element);
+        props.parentCallback(element);
+        event.preventDefault();
+      }
+    });
+
+  }
+
   return (
-    <Stack spacing={2} sx={{ width: 300 }}>
+    <Stack spacing={2} sx={{ width: 300 }} onChange={e => { }}>
       <Autocomplete
         value={value}
         onChange={(event, newValue) => {
-          setValue(newValue);
-          medicines.forEach(element => {
-            if (element['שם תכשיר'] === value){
-              debugger
-              setCheckedMedicine(element);
-            }
-          });
+          onTrigger(event, newValue);
         }}
         freeSolo
         id="free-solo-2-demo"

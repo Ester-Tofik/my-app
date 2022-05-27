@@ -1,6 +1,6 @@
 export default async function getAllMedicinesForUser(_id) {
     try {
-        debugger;
+   
         const url = `http://localhost:3000/medicines/${_id}`;
         const response = await fetch(url);
         const data = await response.json();

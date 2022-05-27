@@ -14,7 +14,6 @@ export default function Medicines() {
 
    
     const getMedicines = async () => {
-        debugger
         const listMedicinceForUser = await getAllMedicinesForUser(_id);
         setListMedicinceForUser(listMedicinceForUser);
     }
