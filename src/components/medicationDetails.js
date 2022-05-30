@@ -24,6 +24,7 @@ export default function MedicationDetails() {
     const [checkedMedicine, setCheckedMedicine] = React.useState({});
     const days= ['א', 'ב', 'ג', 'ד', 'ה', 'ן'];
     const [checkedDays, setCheckedDays] = React.useState(new Array(days.length).fill(true));
+    const [timesChanges, setTimesChanges] = React.useState([]);
 
     const handleReminder = () => {
         if (reminder) {
@@ -67,19 +68,21 @@ export default function MedicationDetails() {
         //////////////////////////////////////////////////////////////// ,times, 
         // ammountOfPills,SendAReminderForPacket, pillsInPacket,SendAReminder 
         async function saveMedicines() {
-            const medicinesToSave = await saveMedicinesFach(store.getState().user._id, checkedMedicine._id,checkedDays, checkedMedicine['שם תכשיר'], amounts, reminderPerPack, pillsNumber, reminder);
+            const medicinesToSave = await saveMedicinesFach(store.getState().user._id, checkedMedicine._id,checkedMedicine['שם תכשיר'],checkedDays,  amounts, reminderPerPack, pillsNumber, reminder);
             store.dispatch(medicinesAction(medicinesToSave));
             console.log(store.getState());
         }
 
         const handleCallback = (childData) => {
-            setCheckedMedicine(childData);
+            debugger
+            setTimesChanges(childData)
         }
 
         useEffect(() => {
             console.log(checkedMedicine);
             console.log(checkedDays);
-        }, [checkedMedicine, checkedDays])
+            console.log(timesChanges);
+        }, [checkedMedicine, checkedDays,timesChanges])
         return (
             <div className="wrapper fadeInDown">
                 <div id="formContent">
@@ -90,7 +93,7 @@ export default function MedicationDetails() {
                         <br />
                         :הוספת תרופה
                         <br /><br />
-                        <Search className="center" parentCallback={handleCallback} />
+                        <Search className="center" parentCallback={childData=>{setCheckedMedicine(childData)}} />
                         <p>:בחר יום</p>
                         {arrayMap}
                         <br /><br /><br />
@@ -98,7 +101,7 @@ export default function MedicationDetails() {
                             InputProps={{ inputProps: { min: '0', max: '5', step: '1' } }} />
                         <span>     :מס' פעמים ביום     </span> <br />
                         <br /><br />
-                        {show && (<Hours amount={amounts} />)}
+                        {show && (<Hours amount={amounts} parentCallback={e=>{handleCallback(e)}}/>)}
 
                         <TextField id="outlined-number" label='כדורים' type="number" InputProps={{ inputProps: { min: '0', max: '3', step: '1' } }} />:מס' כדורים ללקיחה
                         <br /> <br />
