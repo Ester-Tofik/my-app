@@ -19,6 +19,8 @@ import { styled } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
 import EditSharpIcon from '@mui/icons-material/EditSharp';
 import DeleteSharpIcon from '@mui/icons-material/DeleteSharp';
+//import { apdateMedicineDetils } from '../api/medicinceAll';
+
 
 export default function Medicines() {
 
@@ -40,7 +42,7 @@ export default function Medicines() {
         history.push('/medicationDetails');
     }
     const daysInWeekToString = (days) => {
-        debugger
+        
         let stringDays = ''
         const namesOfDays = ['ראשון', 'שני', 'שלישי', 'רביעי', 'חמישי', 'שישי'];
         for (let index = 0; index < days.length; index++) {
@@ -56,6 +58,12 @@ export default function Medicines() {
         debugger
     }
 
+    
+   const editMedicine =async (medicine) => {
+    debugger 
+history.push('/editMedicine', {  medicine :medicine})
+   // const editMedicine = await apdateMedicineDetils(medicine);
+}
     useEffect(async () => {
         await getMedicines();
     }, []);
@@ -101,10 +109,10 @@ export default function Medicines() {
                                                     </ListItemAvatar>
                                                 </ListItem>
                                             </List>
-                                            <IconButton color="secondary" aria-label="upload picture" component="span">
+                                            <IconButton color="secondary" aria-label="upload picture" component="span" onClick={() => deleteMedicine(medicine)}>
                                                 <EditSharpIcon />
                                             </IconButton>
-                                            <IconButton color="secondary" aria-label="upload picture" component="span" onClick={() => deleteMedicine(medicine)}>
+                                            <IconButton color="secondary" aria-label="upload picture" component="span" onClick={() => editMedicine(medicine)}>
                                                 <DeleteSharpIcon />
                                             </IconButton>
                                             

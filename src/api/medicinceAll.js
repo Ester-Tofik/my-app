@@ -60,6 +60,9 @@ export const saveMedicinesFach = async (_id, apiId, name, daysInWeek, numberForD
     }
 }
 
+export const apdateMedicineDetils = async ( medicine)=> {
+    
+}
 
 // export async function saveMedicinesFach(_id, apiId, name, daysInWeek, numberForDay,times, ammountOfPills,SendAReminderForPacket, pillsInPacket,SendAReminder ) {
 //     debugger    

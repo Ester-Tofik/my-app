@@ -18,6 +18,7 @@ import DrinkingWater from './components/drinkingWater';
 import AskADoctor from './components/askADoctor';
 import ReminderManagement from './components/reminderManagement';
 import MedicationDetails from './components/medicationDetails';
+import editMedicineDetails from './components/editMedicineDetails';
 
 // const store = createStore(userReducer, applyMiddleware());
 
@@ -30,6 +31,7 @@ ReactDOM.render(
       <Route path='/menu' component={MenuButton} />
       <Route path='/edit' component={EditUserDetails} />
       <Route path='/medicince' component={Medicines} />
+      <Route path='/editMedicine' component={editMedicineDetails} />
       <Route path='/medicationDetails' component={MedicationDetails} />
       <Route path='/indices' component={Indices} />
       <Route path='/information' component={Information} />

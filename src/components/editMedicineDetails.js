@@ -55,7 +55,11 @@ export default function MedicationDetails() {
     useEffect(() => {
         console.log(checkedMedicine);
         console.log(checkedDays);
-        console.log(timesChanges);
+        console.log(timesChanges); 
+               const d= history.location.state.medicine
+
+
+        console.log(d);
     }, [checkedMedicine, checkedDays, timesChanges])
 
     async function saveMedicines() {
@@ -117,7 +121,7 @@ export default function MedicationDetails() {
                     :שלח לי תזכורת לנטילת תרופה
                     <Checkbox {...label} icon={<NotificationsActiveOutlinedIcon />} checkedIcon={<NotificationsActiveIcon />} onChange={handleReminder} />
                     <br /> <br />
-                    <Button id='buttonMui' variant='contained' onClick={saveMedicines} >שמירה</Button>
+                    <Button id='buttonMui' variant='contained' onClick={saveMedicines} >עדכון</Button>
                 </div>
             </div>
         </div>
