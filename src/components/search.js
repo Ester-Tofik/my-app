@@ -6,26 +6,25 @@ import '../styles/medicationDetails.css';
 import getMedicinesFromApi from '../api/medicineService';
 
 export default function Search(props) {
-  const [medicines, setMedicines] = useState([]);
-  const [flug, setFlug] = useState(false);
+  const [medicines, setMedicines] = React.useState([]);
+  const [flug, setFlug] = React.useState(false);
   // const [searchMedicine, setSearchMedicine] = React.useState(' ');
-  const [value, setValue] = useState('');
-  const [checkedMedicine, setCheckedMedicine] = useState("");
+  const [value, setValue] = React.useState('');
+  const [checkedMedicine, setCheckedMedicine] =  React.useState("");
   useEffect(async () => {
     if (!flug) {
       const data = await getMedicinesFromApi();
       setMedicines(data);
       setFlug(true);
     }
+
   }, [flug])
   useEffect(() => {
-    debugger
     console.log(`${value}`)
-    console.log(checkedMedicine)
+    console.log(`${checkedMedicine}`)
   }, [value, checkedMedicine])
 
   const onTrigger = (event, newValue) => {
-    debugger
     setValue(newValue);
     medicines.forEach(element => {
       if (element['שם תכשיר'] === newValue) {
@@ -34,11 +33,10 @@ export default function Search(props) {
         event.preventDefault();
       }
     });
-
   }
 
   return (
-    <Stack spacing={2} sx={{ width: 300 }} onChange={e => { }}>
+    <Stack spacing={2} sx={{ width: 300 }}>
       <Autocomplete
         value={value}
         onChange={(event, newValue) => {

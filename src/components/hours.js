@@ -1,14 +1,22 @@
 import React, { useState } from 'react'
 import TextField from '@mui/material/TextField';
-
 export default function Hours(props) {
 
     const [times, setTimes] = useState([]);
 
-    const timesChanges = (e) => {
-        const arr = [...times, e.target.value];
+    const timesChanges = (e, i) => {
+        debugger
+        let arr = [];
+        if (times[i]) {
+            arr = times;
+            arr[i] = e.target.value;
+            setTimes(arr);
+        }
+        else {
+            arr = [...times, e.target.value];
+        }
         setTimes(arr);
-        props.parentCallback(times);
+        props.parentCallback(arr);
         e.preventDefault();
         console.log(arr);
     }
@@ -28,7 +36,7 @@ export default function Hours(props) {
                             step: 300, // 5 min
                         }}
                         sx={{ width: 150 }}
-                        onChange={(e)=>timesChanges(e)}
+                        onChange={(e) => timesChanges(e, i)}
                     />
                     <br /><br />
                 </div>

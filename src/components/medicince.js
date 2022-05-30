@@ -4,7 +4,7 @@ import Button from '@mui/material/Button';
 import { useHistory } from "react-router-dom";
 import store from "../store";
 import { useEffect, useState } from 'react';
-import getAllMedicinesForUser from '../api/medicinceAll';
+import { getAllMedicinesForUser } from '../api/medicinceAll';
 
 export default function Medicines() {
 
@@ -12,8 +12,9 @@ export default function Medicines() {
     const [_id, set_Id] = React.useState(store.getState().user._id);
     const [listMedicinceForUser, setListMedicinceForUser] = React.useState([]);
 
-   
+
     const getMedicines = async () => {
+        debugger
         const listMedicinceForUser = await getAllMedicinesForUser(_id);
         setListMedicinceForUser(listMedicinceForUser);
     }
@@ -22,7 +23,7 @@ export default function Medicines() {
     }
 
     useEffect(async () => {
-       await getMedicines();
+        await getMedicines();
     }, []);
 
     return (
