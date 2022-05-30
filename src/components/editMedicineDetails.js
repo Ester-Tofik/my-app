@@ -13,21 +13,22 @@ import store from '../store';
 import AccountMenu from "./menu";
 import { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
+import { apdateMedicineDetils } from '../api/medicinceAll';
 
 export default function MedicationDetails() {
+    const history = useHistory();    
+    const medicine= history.location.state.medicine
     const [amounts, setAmounts] = React.useState(' ');
     const [show, setShow] = React.useState(false);
     const [reminderPerPack, setReminderPerPack] = React.useState(false);
     const [reminder, setReminder] = React.useState(true);
     const [pillsNumber, setPillsNumber] = React.useState(' ');
-    const [checkedMedicine, setCheckedMedicine] = React.useState({});
+    const [checkedMedicine, setCheckedMedicine] = React.useState(medicine.name);
     const days = ['א', 'ב', 'ג', 'ד', 'ה', 'ו'];
-    const [checkedDays, setCheckedDays] = React.useState(new Array(days.length).fill(true));
-    const [timesChanges, setTimesChanges] = React.useState([]);
-    const [amountsForDay, setAmountsForDay] = React.useState(0);
-
+    const [checkedDays, setCheckedDays] = React.useState(medicine.daysInWeek);
+    const [timesChanges, setTimesChanges] = React.useState(medicine.times);
+    const [amountsForDay, setAmountsForDay] = React.useState();
     const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
-    const history = useHistory();
     const handleReminder = () => {
         if (reminder) {
             setReminder(false);
@@ -48,22 +49,15 @@ export default function MedicationDetails() {
         }
         console.log(reminderPerPack)
     }
-    //////////////////////////////////////////////////////////////// apiId, name, daysInWeek, 
-    // numberForDay
-    //////////////////////////////////////////////////////////////// ,times, 
-    // ammountOfPills,SendAReminderForPacket, pillsInPacket,SendAReminder 
     useEffect(() => {
         console.log(checkedMedicine);
         console.log(checkedDays);
         console.log(timesChanges); 
-               const d= history.location.state.medicine
-
-
-        console.log(d);
+        console.log(medicine);
     }, [checkedMedicine, checkedDays, timesChanges])
 
-    async function saveMedicines() {
-        const medicinesToSave = await saveMedicinesFach(store.getState().user._id, checkedMedicine._id, checkedMedicine['שם תכשיר'], checkedDays, amounts,timesChanges,amountsForDay, reminderPerPack, pillsNumber , !reminder);
+    async function editMedicines() {
+        const medicinesToSave = await apdateMedicineDetils(store.getState().user._id, checkedMedicine._id, checkedMedicine['שם תכשיר'], checkedDays, amounts,timesChanges,amountsForDay, reminderPerPack, pillsNumber , !reminder);
         store.dispatch(medicinesAction(medicinesToSave));
         console.log(store.getState());
         history.push('/medicince')
@@ -121,7 +115,7 @@ export default function MedicationDetails() {
                     :שלח לי תזכורת לנטילת תרופה
                     <Checkbox {...label} icon={<NotificationsActiveOutlinedIcon />} checkedIcon={<NotificationsActiveIcon />} onChange={handleReminder} />
                     <br /> <br />
-                    <Button id='buttonMui' variant='contained' onClick={saveMedicines} >עדכון</Button>
+                    <Button id='buttonMui' variant='contained' onClick={editMedicines} >עדכון</Button>
                 </div>
             </div>
         </div>
