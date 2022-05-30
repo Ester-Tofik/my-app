@@ -21,7 +21,7 @@ export default function MedicationDetails() {
     const [reminder, setReminder] = React.useState(true);
     const [pillsNumber, setPillsNumber] = React.useState(' ');
     const [checkedMedicine, setCheckedMedicine] = React.useState({});
-    const days = ['א', 'ב', 'ג', 'ד', 'ה', 'ן'];
+    const days = ['א', 'ב', 'ג', 'ד', 'ה', 'ו'];
     const [checkedDays, setCheckedDays] = React.useState(new Array(days.length).fill(true));
     const [timesChanges, setTimesChanges] = React.useState([]);
     const [amountsForDay, setAmountsForDay] = React.useState(0);

@@ -11,9 +11,6 @@ import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
-import ImageIcon from '@mui/icons-material/Image';
-import WorkIcon from '@mui/icons-material/Work';
-import BeachAccessIcon from '@mui/icons-material/BeachAccess';
 import Divider from '@mui/material/Divider';
 import MedicationLiquidSharpIcon from '@mui/icons-material/MedicationLiquidSharp';
 import CalendarMonthSharpIcon from '@mui/icons-material/CalendarMonthSharp';
@@ -35,6 +32,18 @@ export default function Medicines() {
     const navigateTomedicationDetails = () => {
         history.push('/medicationDetails');
     }
+    const daysInWeekToString = (days) => {
+        debugger
+        let stringDays = ''
+        const namesOfDays = ['ראשון', 'שני', 'שלישי', 'רביעי', 'חמישי', 'שישי'];
+        for (let index = 0; index < days.length; index++) {
+            if (days[index]) {
+                stringDays += ` ,${namesOfDays[index]}`
+            }
+        }
+        stringDays = stringDays.substring( 2,stringDays.length)
+        return stringDays;
+    }
 
     useEffect(async () => {
         await getMedicines();
@@ -44,7 +53,7 @@ export default function Medicines() {
             <div id="formContent">
                 <div className="fadeIn first">
                     <div className="wrapper fadeInDown" >
-                         <Button variant="contained" endIcon={<AddIcon />} onClick={navigateTomedicationDetails}>
+                        <Button variant="contained" endIcon={<AddIcon />} onClick={navigateTomedicationDetails}>
                             הוספת תרופה
                         </Button>
                         <div id="allMedicince" >
@@ -64,7 +73,7 @@ export default function Medicines() {
                                                 <Divider variant="inset" component="li" />
                                                 <ListItem>
 
-                                                    <ListItemText primary="ימים" secondary="Jan 7, 2014" />
+                                                    <ListItemText primary="ימים" secondary={daysInWeekToString(medicine.daysInWeek)} />
                                                     <ListItemAvatar>
                                                         <Avatar>
                                                             <CalendarMonthSharpIcon />
@@ -75,7 +84,7 @@ export default function Medicines() {
                                                 <ListItem>
 
 
-                                                    <ListItemText primary="שעות" secondary="July 20, 2014" />
+                                                    <ListItemText primary="שעות" secondary={medicine.times.map(e=>` ${e}`)} />
                                                     <ListItemAvatar>
                                                         <Avatar>
                                                             <AccessTimeSharpIcon />
@@ -88,7 +97,7 @@ export default function Medicines() {
                                 )}
                         </div>
                         <br />
-                       
+
                     </div>
                 </div>
             </div>
