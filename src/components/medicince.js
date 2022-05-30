@@ -15,9 +15,16 @@ import Divider from '@mui/material/Divider';
 import MedicationLiquidSharpIcon from '@mui/icons-material/MedicationLiquidSharp';
 import CalendarMonthSharpIcon from '@mui/icons-material/CalendarMonthSharp';
 import AccessTimeSharpIcon from '@mui/icons-material/AccessTimeSharp';
-
+import { styled } from '@mui/material/styles';
+import IconButton from '@mui/material/IconButton';
+import EditSharpIcon from '@mui/icons-material/EditSharp';
+import DeleteSharpIcon from '@mui/icons-material/DeleteSharp';
 
 export default function Medicines() {
+
+    const Input = styled('input')({
+        display: 'none',
+    });
 
     const history = useHistory();
     const [_id, set_Id] = React.useState(store.getState().user._id);
@@ -41,7 +48,7 @@ export default function Medicines() {
                 stringDays += ` ,${namesOfDays[index]}`
             }
         }
-        stringDays = stringDays.substring( 2,stringDays.length)
+        stringDays = stringDays.substring(2, stringDays.length)
         return stringDays;
     }
 
@@ -84,7 +91,7 @@ export default function Medicines() {
                                                 <ListItem>
 
 
-                                                    <ListItemText primary="שעות" secondary={medicine.times.map(e=>` ${e}`)} />
+                                                    <ListItemText primary="שעות" secondary={medicine.times.map(e => ` ${e}`)} />
                                                     <ListItemAvatar>
                                                         <Avatar>
                                                             <AccessTimeSharpIcon />
@@ -92,9 +99,17 @@ export default function Medicines() {
                                                     </ListItemAvatar>
                                                 </ListItem>
                                             </List>
+                                                <IconButton color="secondary" aria-label="upload picture" component="span">
+                                                    <EditSharpIcon />
+                                                </IconButton>
+                                                <IconButton color="secondary" aria-label="upload picture" component="span">
+                                                    <DeleteSharpIcon />
+                                                </IconButton>
                                         </div>
                                     </div>
+
                                 )}
+
                         </div>
                         <br />
 
