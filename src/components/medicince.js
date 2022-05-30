@@ -52,6 +52,10 @@ export default function Medicines() {
         return stringDays;
     }
 
+    const deleteMedicine = (medicine) => {
+        debugger
+    }
+
     useEffect(async () => {
         await getMedicines();
     }, []);
@@ -89,8 +93,6 @@ export default function Medicines() {
                                                 </ListItem>
                                                 <Divider variant="inset" component="li" />
                                                 <ListItem>
-
-
                                                     <ListItemText primary="שעות" secondary={medicine.times.map(e => ` ${e}`)} />
                                                     <ListItemAvatar>
                                                         <Avatar>
@@ -99,15 +101,15 @@ export default function Medicines() {
                                                     </ListItemAvatar>
                                                 </ListItem>
                                             </List>
-                                                <IconButton color="secondary" aria-label="upload picture" component="span">
-                                                    <EditSharpIcon />
-                                                </IconButton>
-                                                <IconButton color="secondary" aria-label="upload picture" component="span">
-                                                    <DeleteSharpIcon />
-                                                </IconButton>
+                                            <IconButton color="secondary" aria-label="upload picture" component="span">
+                                                <EditSharpIcon />
+                                            </IconButton>
+                                            <IconButton color="secondary" aria-label="upload picture" component="span" onClick={() => deleteMedicine(medicine)}>
+                                                <DeleteSharpIcon />
+                                            </IconButton>
+                                            
                                         </div>
                                     </div>
-
                                 )}
 
                         </div>
