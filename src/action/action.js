@@ -1,6 +1,6 @@
 const LOG_IN = 'LOG_IN';
 
-export default function  loginInAction (response) {
+export default function loginInAction (response) {
     let user = {
         firstName: response.firstName,
         lastName: response.lastName,

@@ -22,7 +22,6 @@ const initialState = {
         startTakingDate: new Date(),
         SendAReminder: false
     }],
-
     reminderManagement: {
         userWantReminders: true,
         automaticOscillation: false,

@@ -5,6 +5,20 @@ import { useHistory } from "react-router-dom";
 import store from "../store";
 import { useEffect, useState } from 'react';
 import { getAllMedicinesForUser } from '../api/medicinceAll';
+import '../styles/medicine.css'
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemText from '@mui/material/ListItemText';
+import ListItemAvatar from '@mui/material/ListItemAvatar';
+import Avatar from '@mui/material/Avatar';
+import ImageIcon from '@mui/icons-material/Image';
+import WorkIcon from '@mui/icons-material/Work';
+import BeachAccessIcon from '@mui/icons-material/BeachAccess';
+import Divider from '@mui/material/Divider';
+import MedicationLiquidSharpIcon from '@mui/icons-material/MedicationLiquidSharp';
+import CalendarMonthSharpIcon from '@mui/icons-material/CalendarMonthSharp';
+import AccessTimeSharpIcon from '@mui/icons-material/AccessTimeSharp';
+
 
 export default function Medicines() {
 
@@ -25,26 +39,61 @@ export default function Medicines() {
     useEffect(async () => {
         await getMedicines();
     }, []);
-
     return (
-        <div className="wrapper fadeInDown">
+        <div className="wrapper fadeInDown" >
             <div id="formContent">
                 <div className="fadeIn first">
-                    Medicines works!
-                    <div id="allMedicince">
-                        {
-                            listMedicinceForUser.map(el =>
-                                <div>
-                                    <button>{el._id}</button>
-                                </div>)
-                        }
+                    <div className="wrapper fadeInDown" >
+                         <Button variant="contained" endIcon={<AddIcon />} onClick={navigateTomedicationDetails}>
+                            הוספת תרופה
+                        </Button>
+                        <div id="allMedicince" >
+                            {
+                                listMedicinceForUser.map(medicine =>
+                                    <div className="wrapper fadeInDown" >
+                                        <div id="formContent" >
+                                            <List className="ff">
+                                                <ListItem>
+                                                    <ListItemText primary="תרופה" secondary={medicine.name} />
+                                                    <ListItemAvatar>
+                                                        <Avatar>
+                                                            <MedicationLiquidSharpIcon />
+                                                        </Avatar>
+                                                    </ListItemAvatar>
+                                                </ListItem>
+                                                <Divider variant="inset" component="li" />
+                                                <ListItem>
+
+                                                    <ListItemText primary="ימים" secondary="Jan 7, 2014" />
+                                                    <ListItemAvatar>
+                                                        <Avatar>
+                                                            <CalendarMonthSharpIcon />
+                                                        </Avatar>
+                                                    </ListItemAvatar>
+                                                </ListItem>
+                                                <Divider variant="inset" component="li" />
+                                                <ListItem>
+
+
+                                                    <ListItemText primary="שעות" secondary="July 20, 2014" />
+                                                    <ListItemAvatar>
+                                                        <Avatar>
+                                                            <AccessTimeSharpIcon />
+                                                        </Avatar>
+                                                    </ListItemAvatar>
+                                                </ListItem>
+                                            </List>
+                                        </div>
+                                    </div>
+                                )}
+                        </div>
+                        <br />
+                       
                     </div>
-                    <br />
-                    <Button variant="contained" endIcon={<AddIcon />} onClick={navigateTomedicationDetails}>
-                        הוספת תרופה
-                    </Button>
                 </div>
             </div>
         </div>
     )
 }
+
+
