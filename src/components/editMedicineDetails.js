@@ -16,18 +16,18 @@ import { useHistory } from 'react-router-dom';
 import { apdateMedicineDetils } from '../api/medicinceAll';
 
 export default function MedicationDetails() {
-    const history = useHistory();    
-    const medicine= history.location.state.medicine
-    const [amounts, setAmounts] = React.useState(' ');
-    const [show, setShow] = React.useState(false);
-    const [reminderPerPack, setReminderPerPack] = React.useState(false);
-    const [reminder, setReminder] = React.useState(true);
-    const [pillsNumber, setPillsNumber] = React.useState(' ');
+    const history = useHistory();
+    const [medicine, setMedicine] = React.useState(history.location.state.medicine);
+    const [ammountOfPills, setAmmountOfPills] = React.useState(medicine.ammountOfPills);
+    const [show, setShow] = React.useState(true);
+    const [reminderPerPack, setReminderPerPack] = React.useState(medicine.SendAReminderForPacket);
+    const [reminder, setReminder] = React.useState(medicine.SendAReminder);
+    const [pillsNumber, setPillsNumber] = React.useState(medicine.pillsInPacket);
     const [checkedMedicine, setCheckedMedicine] = React.useState(medicine.name);
     const days = ['א', 'ב', 'ג', 'ד', 'ה', 'ו'];
     const [checkedDays, setCheckedDays] = React.useState(medicine.daysInWeek);
     const [timesChanges, setTimesChanges] = React.useState(medicine.times);
-    const [amountsForDay, setAmountsForDay] = React.useState();
+    const [amountsForDay, setAmountsForDay] = React.useState(medicine.numberForDay);
     const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
     const handleReminder = () => {
         if (reminder) {
@@ -39,6 +39,22 @@ export default function MedicationDetails() {
         console.log(reminder)
     }
 
+    useEffect(() => {
+        console.log(checkedDays)
+        console.log(checkedMedicine)
+    }, [checkedDays, checkedMedicine])
+
+    useEffect(() => {
+        debugger
+        console.log(medicine)
+        console.log(checkedMedicine)
+    }, [])
+
+    useEffect(() => {
+        console.log(medicine.daysInWeek)
+        console.log(medicine.checkedDays)
+        console.log(medicine)
+    }, [medicine])
     //הטרו והפלס הפוכים
     const handleReminderPerPack = (event) => {
         if (reminderPerPack) {
@@ -48,16 +64,17 @@ export default function MedicationDetails() {
             setReminderPerPack(true);
         }
         console.log(reminderPerPack)
+
     }
     useEffect(() => {
-        console.log(checkedMedicine);
-        console.log(checkedDays);
-        console.log(timesChanges); 
-        console.log(medicine);
-    }, [checkedMedicine, checkedDays, timesChanges])
+        console.log(amountsForDay);
+        console.log(ammountOfPills);
+        console.log(medicine.name);
+    }, [amountsForDay, ammountOfPills])
+
 
     async function editMedicines() {
-        const medicinesToSave = await apdateMedicineDetils(store.getState().user._id, checkedMedicine._id, checkedMedicine['שם תכשיר'], checkedDays, amounts,timesChanges,amountsForDay, reminderPerPack, pillsNumber , !reminder);
+        const medicinesToSave = await apdateMedicineDetils(store.getState().user._id, medicine._id, medicine.apiId, checkedMedicine, checkedDays, amountsForDay, timesChanges, ammountOfPills, reminderPerPack, pillsNumber, reminder);
         store.dispatch(medicinesAction(medicinesToSave));
         console.log(store.getState());
         history.push('/medicince')
@@ -72,10 +89,18 @@ export default function MedicationDetails() {
         debugger
         setTimesChanges(e);
     }
+    const hoursChanged = (e) => {
+        debugger
+        setAmountsForDay(Number(e.target.value));
+        setShow(true);
+        let arr = timesChanges.slice(0, amountsForDay);
+        setTimesChanges(arr);
+    }
     const arrayMap = days.map((element, index) => {
         return (
             <div>
-                <Checkbox  {...label} defaultChecked
+                <Checkbox  {...label}
+                    defaultChecked={checkedDays[index]}
                     onChange={() => handleOnChange(index)} />
                 {element}
             </div>
@@ -91,29 +116,36 @@ export default function MedicationDetails() {
                     <br />
                     :הוספת תרופה
                     <br /><br />
-                    <Search className="center" parentCallback={(childData) => { setCheckedMedicine(childData) }} />
+                    <Search className="center" parentCallback={(childData) => {
+                        debugger
+                        setCheckedMedicine(childData["שם תכשיר"])
+                    }}
+                        value={checkedMedicine} />
                     <p>:בחר יום</p>
                     {arrayMap}
                     <br /><br /><br />
-                    <TextField id="outlined-number" label={amounts} type="number" onChange={e => setAmounts(Number(e.target.value), setShow(true))}
+                    <TextField id="outlined-number" label={amountsForDay} defaultValue={amountsForDay} type="number" onChange={(e) => { hoursChanged(e) }}
                         InputProps={{ inputProps: { min: '0', max: '5', step: '1' } }} />
                     <span>     :מס' פעמים ביום     </span> <br />
                     <br /><br />
-                    {show && (<Hours amount={amounts} parentCallback={(e) => { handleChangeHours(e) }} />)}
 
-                    <TextField id="outlined-number" label='כדורים' type="number" onChange={e => setAmountsForDay(Number(e.target.value))}  InputProps={{ inputProps: { min: '0', max: '3', step: '1' } }} />:מס' כדורים ללקיחה
+                    {/* {show && (<Hours amount={amountsForDay} parentCallback={(e) => { handleChangeHours(e) }} times={timesChanges} />)}
+                    <TextField id="outlined-number" defaultValue={amountsForDay} label='כדורים' type="number" onChange={e => setAmountsForDay(Number(e.target.value))} InputProps={{ inputProps: { min: '0', max: '3', step: '1' } }} />:מס' כדורים ללקיחה */}
+                    {show && (<Hours amount={amountsForDay} parentCallback={(e) => { handleChangeHours(e) }} times={timesChanges} />)}
+
+                    <TextField id="outlined-number" label={ammountOfPills} type="number" defaultValue={ammountOfPills} onChange={e => setAmmountOfPills(Number(e.target.value))} InputProps={{ inputProps: { min: '0', max: '3', step: '1' } }} />:מס' כדורים ללקיחה
                     <br /> <br />
                     <div >
                         שלח לי תזכורת לחידוש חפיסה
-                        <Checkbox {...label} icon={<NotificationsActiveOutlinedIcon />} checkedIcon={<NotificationsActiveIcon />} onChange={handleReminderPerPack} />
+                        <Checkbox {...label} icon={<NotificationsActiveOutlinedIcon />} checkedIcon={<NotificationsActiveIcon />} onChange={handleReminderPerPack} checked={reminderPerPack} />
                         {reminderPerPack && (
                             <div>
-                                <TextField id="outlined-number" label='כדורים' type="number" InputProps={{ inputProps: { min: '0', max: '100', step: '1' } }} onChange={e => setPillsNumber(Number(e.target.value))} />
+                                <TextField id="outlined-number" label='כדורים' type="number" InputProps={{ inputProps: { min: '0', max: '100', step: '1' } }} onChange={e => setPillsNumber(Number(e.target.value))} defaultValue={pillsNumber} />
                                 :כרגע יש לי בחפיסה</div>
                         )}<br /><br />
                     </div>
                     :שלח לי תזכורת לנטילת תרופה
-                    <Checkbox {...label} icon={<NotificationsActiveOutlinedIcon />} checkedIcon={<NotificationsActiveIcon />} onChange={handleReminder} />
+                    <Checkbox {...label} icon={<NotificationsActiveOutlinedIcon />} checkedIcon={<NotificationsActiveIcon />} onChange={handleReminder} checked={reminder} />
                     <br /> <br />
                     <Button id='buttonMui' variant='contained' onClick={editMedicines} >עדכון</Button>
                 </div>

@@ -93,7 +93,7 @@ export default function MedicationDetails() {
                     <br />
                     :הוספת תרופה
                     <br /><br />
-                    <Search className="center" parentCallback={(childData) => { setCheckedMedicine(childData) }} />
+                    <Search className="center" parentCallback={(childData) => { setCheckedMedicine(childData) }}  />
                     <p>:בחר יום</p>
                     {arrayMap}
                     <br /><br /><br />

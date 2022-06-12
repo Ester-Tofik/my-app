@@ -1,8 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import TextField from '@mui/material/TextField';
 export default function Hours(props) {
 
     const [times, setTimes] = useState([]);
+    useEffect(()=>{
+        console.log(props.amount)
+    },[])
 
     const timesChanges = (e, i) => {
         debugger
@@ -10,6 +13,7 @@ export default function Hours(props) {
         if (times[i]) {
             arr = times;
             arr[i] = e.target.value;
+        
             setTimes(arr);
         }
         else {
@@ -28,6 +32,7 @@ export default function Hours(props) {
                     <TextField
                         id="time"
                         label="בחר שעה"
+                        defaultValue={props.times[i]}
                         type="time"
                         InputLabelProps={{
                             shrink: true,

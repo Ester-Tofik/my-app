@@ -60,8 +60,37 @@ export const saveMedicinesFach = async (_id, apiId, name, daysInWeek, numberForD
     }
 }
 
-export const apdateMedicineDetils = async ( medicine)=> {
-    
+export const apdateMedicineDetils = async ( _id,_idm ,apiId, name, daysInWeek, numberForDay,timesChanges, ammountOfPills,SendAReminderForPacket, pillsInPacket,SendAReminder)=> {
+    debugger    
+    let medicine = {
+        _id: _id,
+        _idm: _idm,
+        apiId: apiId,
+        name: name,
+        daysInWeek: daysInWeek,
+        numberForDay: numberForDay,
+        times:timesChanges,
+        ammountOfPills: ammountOfPills,
+        SendAReminderForPacket: SendAReminderForPacket,
+        pillsInPacket: pillsInPacket,
+        SendAReminder: SendAReminder
+    }
+    try {
+        const url = `http://localhost:3000/medicines/${_id}`;
+        const response = await fetch(url, {
+            method: "PUT",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(medicine)
+        });
+        const updateMedicinesUser = response.json();
+        console.log(updateMedicinesUser);
+        return updateMedicinesUser;
+    }
+    catch (err) {
+        throw new Error("status Code is:" + err);
+    }
 }
 
 // export async function saveMedicinesFach(_id, apiId, name, daysInWeek, numberForDay,times, ammountOfPills,SendAReminderForPacket, pillsInPacket,SendAReminder ) {

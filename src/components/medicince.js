@@ -61,7 +61,7 @@ export default function Medicines() {
     
    const editMedicine =async (medicine) => {
     debugger 
-history.push('/editMedicine', {  medicine :medicine})
+    history.push('/editMedicine', {  medicine :medicine})
    // const editMedicine = await apdateMedicineDetils(medicine);
 }
     useEffect(async () => {

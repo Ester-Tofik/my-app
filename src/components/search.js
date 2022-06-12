@@ -11,7 +11,11 @@ export default function Search(props) {
   // const [searchMedicine, setSearchMedicine] = React.useState(' ');
   const [value, setValue] = React.useState('');
   const [checkedMedicine, setCheckedMedicine] =  React.useState("");
-  useEffect(async () => {
+ const [medicine, setMedicine] = React.useState(props.value);
+
+  useEffect(async () => {  
+        debugger
+        console.log(props.value)
     if (!flug) {
       const data = await getMedicinesFromApi();
       setMedicines(data);
@@ -28,6 +32,7 @@ export default function Search(props) {
     setValue(newValue);
     medicines.forEach(element => {
       if (element['שם תכשיר'] === newValue) {
+        debugger
         setCheckedMedicine(element);
         props.parentCallback(element);
         event.preventDefault();
@@ -48,12 +53,15 @@ export default function Search(props) {
         options={medicines.map((option) => option['שם תכשיר'])}
 
         renderInput={(params) => (
-          <TextField className='center'
+          <TextField className='center' 
             {...params}
-            label="חפש תרופה"
+             placeholder={props.value}
+             label="בחר תרופה"  
+             defaultValue={props.value}
             InputProps={{
               ...params.InputProps,
               type: 'search',
+              
             }}
           />
         )}
