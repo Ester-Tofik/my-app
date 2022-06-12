@@ -19,6 +19,7 @@ import { styled } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
 import EditSharpIcon from '@mui/icons-material/EditSharp';
 import DeleteSharpIcon from '@mui/icons-material/DeleteSharp';
+import { deleteOneMedicineDromDB } from '../api/medicinceAll';
 
 
 export default function Medicines() {
@@ -53,8 +54,9 @@ export default function Medicines() {
         return stringDays;
     }
 
-    const deleteMedicine = (medicine) => {
-        debugger
+    const deleteOneMedicine = async (medicine) => {
+        const deleteOneMedicineFetch = await deleteOneMedicineDromDB(_id, medicine._id);
+        await getMedicines();
     }
 
     
@@ -110,8 +112,8 @@ export default function Medicines() {
                                             <IconButton color="secondary" aria-label="upload picture" component="span" onClick={() => editMedicine(medicine)}>
                                                 <EditSharpIcon />
                                             </IconButton>
-                                            <IconButton color="secondary" aria-label="upload picture" component="span" onClick={() => deleteMedicine(medicine)}>
-                                                <DeleteSharpIcon />
+                                            <IconButton color="secondary" aria-label="upload picture" component="span" >
+                                            <DeleteSharpIcon onClick={() => deleteOneMedicine(medicine)} />
                                             </IconButton>
                                             
                                         </div>
