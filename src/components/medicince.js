@@ -64,6 +64,7 @@ export default function Medicines() {
     debugger 
     history.push('/editMedicine', {  medicine :medicine})
 }
+
     useEffect(async () => {
         await getMedicines();
     }, []);
