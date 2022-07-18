@@ -1,14 +1,14 @@
-import "../styles/signUp.css";
+import "../../styles/signUp.css";
 import "primereact/resources/themes/lara-light-indigo/theme.css";  //theme
 import "primeicons/primeicons.css";
 import "primereact/resources/themes/bootstrap4-light-blue/theme.css";
-import "../styles/login.css";
-import logo from '../img/aa.jpg';
+import "../../styles/login.css";
+import logo from '../../img/aa.jpg';
 import { useEffect, useState } from "react";
-import { updateUserDetails } from "../api/userService";
-import AccountMenu from "./menu";
-import store from "../store";
-import loginInAction from '../action/action';
+import { updateUserDetails } from "../../api/userService";
+import AccountMenu from "../global/menu";
+import store from "../../store";
+import loginInAction from '../../action/action';
 import { useHistory } from "react-router-dom";
 
 

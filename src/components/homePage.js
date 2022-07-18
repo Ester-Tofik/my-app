@@ -1,4 +1,4 @@
-import AccountMenu from './menu';
+import AccountMenu from '../components/global/menu';
 import * as React from 'react';
 import Button from '@mui/material/Button';
 import MedicationIcon from '@mui/icons-material/Medication';

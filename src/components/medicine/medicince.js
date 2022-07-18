@@ -2,10 +2,10 @@ import AddIcon from '@mui/icons-material/Add';
 import * as React from 'react';
 import Button from '@mui/material/Button';
 import { useHistory } from "react-router-dom";
-import store from "../store";
+import store from "../../store";
 import { useEffect, useState } from 'react';
-import { getAllMedicinesForUser } from '../api/medicinceAll';
-import '../styles/medicine.css';
+import { getAllMedicinesForUser } from '../../api/medicinceAll';
+import '../../styles/medicine.css';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
@@ -19,7 +19,7 @@ import { styled } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
 import EditSharpIcon from '@mui/icons-material/EditSharp';
 import DeleteSharpIcon from '@mui/icons-material/DeleteSharp';
-import { deleteOneMedicineDromDB } from '../api/medicinceAll';
+import { deleteOneMedicineDromDB } from '../../api/medicinceAll';
 
 
 export default function Medicines() {

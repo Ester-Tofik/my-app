@@ -1,14 +1,14 @@
-import "../styles/signUp.css";
+import "../../styles/signUp.css";
 import "primereact/resources/themes/lara-light-indigo/theme.css";  //theme
 import "primeicons/primeicons.css";
 import "primereact/resources/themes/bootstrap4-light-blue/theme.css";
-import "../styles/login.css";
-import logo from '../img/aa.jpg';
+import "../../styles/login.css";
+import logo from '../../img/aa.jpg';
 import { useEffect, useState } from "react";
-import { signUpApi } from "../api/userService";
+import { signUpApi } from "../../api/userService";
 import { useHistory } from "react-router-dom";
-import store from "../store";
-import loginInAction from '../action/action';
+import store from "../../store";
+import loginInAction from '../../action/action';
 
 export default function SignUp() {
 	const [firstName, setFirstName] = useState("");

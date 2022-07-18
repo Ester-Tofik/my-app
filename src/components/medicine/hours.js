@@ -3,6 +3,7 @@ import TextField from '@mui/material/TextField';
 export default function Hours(props) {
 
     const [times, setTimes] = useState([]);
+
     useEffect(()=>{
         console.log(props.amount)
     },[])
@@ -32,7 +33,7 @@ export default function Hours(props) {
                     <TextField
                         id="time"
                         label="בחר שעה"
-                        defaultValue={props.times[i]}
+                        // defaultValue={props.times[i]}
                         type="time"
                         InputLabelProps={{
                             shrink: true,

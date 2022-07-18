@@ -13,7 +13,7 @@ import ModeEditIcon from '@mui/icons-material/ModeEdit';
 import PermIdentityTwoToneIcon from '@mui/icons-material/PermIdentityTwoTone';
 import { useHistory } from "react-router-dom";
 import HomeIcon from '@mui/icons-material/Home';
-import store from '../store';
+import store from '../../store';
 import { useEffect } from "react";
 
 export default function AccountMenu() {

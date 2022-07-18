@@ -2,23 +2,20 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import LogIn from './components/logIn'
-import { userReducer } from './reducer/reducer';
-import { createStore, applyMiddleware } from 'redux';
-import { Provider } from 'react-redux'
-import SignUp from './components/signUp';
+import LogIn from './components/user/logIn';
+import SignUp from './components/user/signUp';
 import { Route, BrowserRouter } from 'react-router-dom';
 import HomePage from "./components/homePage";
-import MenuButton from './components/menu';
-import EditUserDetails from './components/editUserDetails';
-import Medicines from './components/medicince';
-import Indices from './components/indices';
-import Information from './components/information';
-import DrinkingWater from './components/drinkingWater';
-import AskADoctor from './components/askADoctor';
-import ReminderManagement from './components/reminderManagement';
-import MedicationDetails from './components/medicationDetails';
-import editMedicineDetails from './components/editMedicineDetails';
+import MenuButton from './components/global/menu';
+import EditUserDetails from './components/user/editUserDetails';
+import Medicines from './components/medicine/medicince';
+import Indices from './components/global/indices';
+import Information from './components/global/information';
+import DrinkingWater from './components/drinkingWater/drinkingWater';
+import AskADoctor from './components/askDoctor/askADoctor';
+import ReminderManagement from './components/reminderManagement/reminderManagement';
+import MedicationDetails from './components/medicine/medicationDetails';
+import editMedicineDetails from './components/medicine/editMedicineDetails';
 
 // const store = createStore(userReducer, applyMiddleware());
 

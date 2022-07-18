@@ -81,7 +81,7 @@ export const apdateMedicineDetils = async ( _id,_idm ,apiId, name, daysInWeek, n
         SendAReminder: SendAReminder
     }
     try {
-        const url = `http://localhost:3000/medicines/${_id}`;
+        const url = `http://localhost:3000/medicines/update/${_id}`;
         const response = await fetch(url, {
             method: "PUT",
             headers: {

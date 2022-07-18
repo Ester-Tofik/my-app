@@ -2,7 +2,7 @@ import * as React from 'react';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Switch from '@material-ui/core/Switch';
 import { useState, useEffect } from 'react';
-import '../styles/ReminderManagement.css';
+import '../../styles/ReminderManagement.css';
 import Checkbox from '@mui/material/Checkbox';
 import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
 import NotificationsActiveOutlinedIcon from '@mui/icons-material/NotificationsActiveOutlined';
@@ -10,13 +10,13 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-import AccountMenu from "./menu";
-import a from '../assets/a.mp3';
-import saveReminderManageMentFetch from '../api/reminderService';
+import AccountMenu from "../global/menu";
+import a from '../../assets/2.mp3';
+import saveReminderManageMentFetch from '../../api/reminderService';
 import { useHistory } from 'react-router-dom';
-import store from '../store';
+import store from '../../store';
 // const alarm = new Audio(soundfile);
-import reminderAction from '../action/reminderAction';
+import reminderAction from '../../action/reminderAction';
 
 export default function ReminderManagement() {
 

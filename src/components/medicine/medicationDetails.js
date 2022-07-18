@@ -4,13 +4,13 @@ import Checkbox from '@mui/material/Checkbox';
 import TextField from '@mui/material/TextField';
 import { Button } from '@material-ui/core';
 import Hours from './hours';
-import '../styles/medicationDetails.css';
+import '../../styles/medicationDetails.css';
 import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
 import NotificationsActiveOutlinedIcon from '@mui/icons-material/NotificationsActiveOutlined';
-import { saveMedicinesFach } from '../api/medicinceAll'
-import medicinesAction from '../action/medicationAction';
-import store from '../store';
-import AccountMenu from "./menu";
+import { saveMedicinesFach } from '../../api/medicinceAll'
+import medicinesAction from '../../action/medicationAction';
+import store from '../../store';
+import AccountMenu from "../../components/global/menu";
 import { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 
