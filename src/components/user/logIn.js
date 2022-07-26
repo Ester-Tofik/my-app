@@ -3,7 +3,7 @@ import "primereact/resources/themes/lara-light-indigo/theme.css";  //theme
 import "primeicons/primeicons.css";
 import "primereact/resources/themes/bootstrap4-light-blue/theme.css";
 import "../../styles/login.css";
-import logo from '../../img/logo.jpg';
+import logo from '../../img/aa.jpg';
 import { logInByEmailAndPassword } from '../../api/userService';
 import { useHistory } from "react-router-dom";
 import store from "../../store";

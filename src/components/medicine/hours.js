@@ -3,10 +3,15 @@ import TextField from '@mui/material/TextField';
 export default function Hours(props) {
 
     const [times, setTimes] = useState([]);
+    const [ifProps, setIfProps] = useState(false);
 
-    useEffect(()=>{
+    useEffect(() => {
+        if (props.times) {
+            setIfProps(true);
+            console.log('props', props);
+        }
         console.log(props.amount)
-    },[])
+    }, [])
 
     const timesChanges = (e, i) => {
         debugger
@@ -14,7 +19,7 @@ export default function Hours(props) {
         if (times[i]) {
             arr = times;
             arr[i] = e.target.value;
-        
+
             setTimes(arr);
         }
         else {
@@ -28,6 +33,25 @@ export default function Hours(props) {
 
     return (
         <>
+            {/* {ifProps & [...Array(props.amount)].map((el, i) => (
+                <div>
+                    <TextField
+                        id="time"
+                        label="בחר שעה"
+                        defaultValue={props.times[i]}
+                        type="time"
+                        InputLabelProps={{
+                            shrink: true,
+                        }}
+                        inputProps={{
+                            step: 300, // 5 min
+                        }}
+                        sx={{ width: 150 }}
+                        onChange={(e) => timesChanges(e, i)}
+                    />
+                    <br /><br />
+                </div>
+            ))} */}
             {[...Array(props.amount)].map((el, i) => (
                 <div>
                     <TextField
